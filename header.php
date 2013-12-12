@@ -23,13 +23,15 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body <?php body_class(); ?>>
+	<body>
 		<div id="container">
 			<header class="header" role="banner">
-				<div id="inner-header" class="wrap clearfix">
-					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+				<div id="inner-header" class="clearfix">
+					<a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/mt_logo.png" id="logo" alt="Master's Touch Tree Service Logo" /></a>	
+					<!-- <p id="logo"><?php //bloginfo('name'); ?><a href="<?php //echo home_url(); ?>" rel="nofollow"></a></p> -->
 					<nav role="navigation">
 						<?php bones_main_nav(); ?>
 					</nav>
 				</div>
 			</header>
+		</div>	

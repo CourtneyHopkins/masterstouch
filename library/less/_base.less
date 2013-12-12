@@ -1,34 +1,6 @@
 /******************************************************************
-Site Name:
-Author:
-
 Stylesheet: Base Mobile Stylesheet
-
-Be light and don't over style since everything here will be
-loaded by mobile devices. You want to keep it as minimal as
-possible. This is called at the top of the main stylsheet
-and will be used across all viewports.
-
------------- MAP ------------
-
-01. GENERAL STYLES
-02. WORDPRESS BODY CLASSES
-03. LAYOUT & GRID STYLES
-04. LINK STYLES
-05. H1, H2, H3, H4, H5 STYLES
-06. HEADER STYLES
-07. NAVIGATION STYLES
-08. POSTS & CONTENT STYLES
-09. PAGE NAVI STYLES
-10. COMMENT STYLES
-11. COMMENT FORM STYLES
-12. SIDEBARS & ASIDES
-13. FOOTER STYLES
-
 ******************************************************************/
-
-
-
 
 /*********************
 01. GENERAL STYLES
@@ -36,6 +8,7 @@ and will be used across all viewports.
 
 html, body {
 	/* height: 100%; */
+	background: @green;
 }
 body {
 	font-family: @serif;
@@ -43,47 +16,6 @@ body {
 	line-height: 1.5;
 	color: #565656;
 }
-
-/********************
-02. WORDPRESS BODY CLASSES
-    style a page via class
-********************/
-
-.rtl {}                           /* for sites that are read right to left (i.e. hebrew) */
-.home {}                          /* home page */
-.blog {}                          /* blog template page */
-.archive {}                       /* archive page */
-.date {}                          /* date archive page */
-	.date-paged-1 {}                /* replace the number to the corresponding page number */
-.search {}                        /* search page */
-	.search-results {}              /* search result page */
-	.search-no-results {}           /* no results search page */
-	.search-paged-1 {}              /* individual paged search (i.e. body.search-paged-3) */
-.error404 {}                      /* 404 page */
-.single {}                        /* single post page */
-	.postid-1 {}                    /* individual post page by id (i.e. body.postid-73) */
-	.single-paged-1 {}              /* individual paged single (i.e. body.single-paged-3) */
-.attachment {}                    /* attatchment page */
-	.attachmentid-1 {}              /* individual attatchment page (i.e. body.attachmentid-763) */
-	.attachment-mime-type {}        /* style mime type pages */
-.author {}                        /* author page */
-	.author-nicename {}             /* user nicename (i.e. body.author-samueladams) */
-	.author-paged-1 {}              /* paged author archives (i.e. body.author-paged-4) for page 4 */
-.category {}                      /* category page */
-	.category-1 {}                  /* individual category page (i.e. body.category-6) */
-	.category-paged-1 {}            /* replace the number to the corresponding page number */
-.tag {}                           /* tag page */
-	.tag-slug {}                    /* individual tag page (i.e. body.tag-news) */
-	.tag-paged-1 {}                 /* replace the number to the corresponding page number */
-.page-template {}                 /* custom page template page */
-	.page-template-page-php {}      /* individual page template (i.e. body.page-template-contact-php */
-	.page-paged-1 {}                /* replace the number to the corresponding page number */
-	.page-parent {}                 /* parent page template */
-	.page-child {}                  /* child page template */
-	.parent-pageid-1 {}             /* replace the number to the corresponding page number */
-.logged-in {}                     /* if user is logged in */
-.paged {}                         /* paged items like search results or archives */
-	.paged-1 {}                     /* individual paged (i.e. body.paged-3) */
 
 /*********************
 03. LAYOUT & GRID STYLES
@@ -93,7 +25,9 @@ body {
 	width: 96%;
 	margin: 0 auto;
 }
-#container {}
+#container {
+	background: @light-gray;
+}
 
 /*********************
 04. LINK STYLES
@@ -174,9 +108,20 @@ h5, .h5 {
 *********************/
 
 .header {
-	#inner-header {}
+	color: #ebebeb;
+	
+	
+	#inner-header {
+		width: 100%;
+		height: 77px;
+		background: url(../images/green_fabric_bg.png) repeat-x @light-gray;
+	}
 
-	#logo {}
+	img#logo {
+		width: 80px;
+		position: relative;
+		margin: 0 auto;
+	}
 	
 	nav {
 		div.top-nav {
@@ -191,100 +136,110 @@ h5, .h5 {
 			}
 		}
 	}
+
+	.nav {
+		border-bottom: 0;
+
+		li {
+
+			a {
+				display: block;
+				text-decoration: none;
+				padding: 10px 10px;
+				background-color: #eee;
+				border-bottom: 1px solid #ccc;
+				color: #333333;
+				text-transform: uppercase;
+				font-family: @sans-serif;
+				font-weight: 700;
+				letter-spacing: 1px;
+
+				&:hover, &:focus {
+					color: #333333;
+				}
+			}
+
+			&:first-child {}
+
+			&:last-child {}
+
+			ul.sub-menu,
+			ul.children {
+
+				li {
+
+					a {
+						padding-left: 30px;
+
+						&:hover,
+						&:focus {}
+
+						&:link {}
+
+					}
+
+					&:first-child {}
+
+					&:last-child {}
+
+				}
+
+			}
+
+		} /* end .menu li */
+
+		/* highlight current page */
+		li.current-menu-item,
+		li.current_page_item,
+		li.current_page_ancestor {
+
+			a {}
+
+		}  /* end current highlighters */
+
+	} /* end .nav */
 }
 
 /*********************
 07. NAVIGATION STYLES
 *********************/
 
-/*
-all navs have a .nav class applied via
-the wp_menu function; this is so we can
-easily write one group of styles for
-the navs on the site so our css is cleaner
-and more scalable.
-*/
 
-.nav {
-	border: 1px solid #ccc;
-	border-bottom: 0;
 
-	li {
+/*********************
+HOMEPAGE
+*********************/
 
-		a {
-			display: block;
-			text-decoration: none;
-			padding: 10px 10px;
-			background-color: #eee;
-			border-bottom: 1px solid #ccc;
+#homepage-slideshow {
+	background: @light-gray;
+}
 
-			/*
-			remember this is for mobile ONLY, so there's no need
-			to even declare hover styles here, you can do it in
-			the style.scss file where it's relevant. We want to
-			keep this file as small as possible!
-			*/
-			&:hover, &:focus {
+.featured-area {
+	background: #ebebeb;
+	
+	.homepage-featured {
+		border-radius: 5px;
+		background: #333333;
+		height: 300px !important;
+	}
 
-			}
-		}
+	#homepage-crew {}
 
-		&:first-child {}
+	#homepage-emergency {}
 
-		&:last-child {}
-
-		/*
-		so you really have to rethink your dropdowns for mobile.
-		you don't want to have it expand too much because the
-		screen is so small. How you manage your menu should
-		depend on the project. Here's some great info on it:
-		http://www.alistapart.com/articles/organizing-mobile/
-		*/
-		ul.sub-menu,
-		ul.children {
-
-			li {
-
-				a {
-					padding-left: 30px;
-
-					&:hover,
-					&:focus {}
-
-					&:link {}
-
-				}
-
-				&:first-child {}
-
-				&:last-child {}
-
-			}
-
-		}
-
-	} /* end .menu li */
-
-	/* highlight current page */
-	li.current-menu-item,
-	li.current_page_item,
-	li.current_page_ancestor {
-
-		a {}
-
-	}  /* end current highlighters */
-
-} /* end .nav */
-
+	#homepage-before-after {}
+}
 
 /*********************
 08. POSTS & CONTENT STYLES
 *********************/
 
 #content {
-	margin-top: 2.2em;
+background: #ebebeb;
 
-	#inner-content {}
+	#inner-content {
+		max-width: 1080px;
+	}
 }
 
 		.hentry {
@@ -853,19 +808,24 @@ and more scalable.
 
 .footer {
 	clear: both;
+	background: @green;
+
 	#inner-footer {
-	}
-	nav {
-		ul.nav {
-			li {
-				a {}
+		color: #ebebeb;
 
-				&:first-child {}
+		nav {
+			ul.nav {
+				li {
+					a {}
 
-				&:last-child {}
+					&:first-child {}
+
+					&:last-child {}
+				}
 			}
 		}
 	}
+	
 }
 
 	/*
