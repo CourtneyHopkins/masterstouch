@@ -16,7 +16,7 @@ LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	max-width: 1400px;
+	max-width: 1200px;
 }
 
 /*********************
@@ -24,108 +24,46 @@ HEADER STYLES
 *********************/
 
 .header {
-	padding-top: 30px;
+	padding-top: 0;
+
+	#site-title {
+		font-size: 2.3rem;
+		margin: 15px 0;
+	}
+
+	#inner-header {
+		width: 100%;
+
+		.nav-container {
+			width: 575px;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.nav {
+			margin: 0;
+			padding-top: 15px;
+
+			a {
+				border-bottom: 0;
+				background: none !important;
+				color: #ebebeb;
+				float: left;
+				padding: 10px 20px;
+
+				&:hover, &:focus {
+					color: @link-hover;
+					text-decoration: none !important;
+				}
+			}	
+		} /* end .nav */
+	}
 
 	#logo {
-		width: 150px !important;
-		margin: -35px auto 0 auto !important;
+		width: 115px !important;
+		margin: -18px auto 0 auto !important;
 	}	
 }
-
-/*********************
-NAVIGATION STYLES
-*********************/
-
-.nav {
-	float: right;
-	margin: 0;
-
-	li {
-		float: left;
-		position: relative;
-
-		a {
-			border-bottom: 0;
-			background: none !important;
-			color: #ebebeb;
-
-			&:hover, &:focus {
-				background-color: #dedede;
-
-			}
-		}
-
-		&:first-child {}
-		&:last-child {}
-
-		/*
-		plan your menus and drop-downs wisely.
-		*/
-		ul.sub-menu,
-		ul.children {
-			margin-top: 0;
-			border: 1px solid #ccc;
-			border-top: 0;
-			position: absolute;
-			display: none;
-			z-index: 8999;
-
-			li {
-
-				a {
-					padding-left: 10px;
-					border-right: 0;
-					display: block;
-					width: 180px;
-					border-bottom: 1px solid #ccc;
-
-					&:hover,
-					&:focus {}
-
-					&:link {}
-				}
-
-				&:first-child {}
-
-				&:last-child {
-
-					a {
-						border-bottom: 0;
-					}
-				}
-
-				/*
-				if you need to go deeper, go nuts
-				just remember deeper menus suck
-				for usability. k, bai.
-				*/
-				ul {}
-			}
-
-			/* highlight sub-menu current page */
-			li.current-menu-item,
-			li.current_page_item,
-			li.current-page-ancestor {
-				a {}
-			}
-		}
-
-		/* showing sub-menus */
-		&:hover ul {
-			top: auto;
-			display: block;
-		}
-
-	} /* end .menu ul li */
-
-	/* highlight current page */
-	li.current-menu-item,
-	li.current_page_item,
-	li.current-page-ancestor {
-		a {}
-	}  /* end current highlighters */
-
-} /* end .nav */
 
 /*********************
 CONTENT & POSTS
@@ -133,12 +71,42 @@ CONTENT & POSTS
 
 #homepage-slideshow {
 	width: 100%;
-	height: 400px; 
+	height: 250px; 
 }
 
-#content {
-	
-	#inner-content {}
+#tagline {
+	font-size: 1.7rem;
+	text-align: center;
+	line-height: 30px;
+	color: @dark-gray;
+	line-height: 30px;
+
+	p {
+		padding: 20px 20%;
+	}
+}
+
+#homepage-content {
+	padding: 40px;
+}
+
+.featured-area {
+	max-width: 840px;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+
+	#homepage-crew,
+	#homepage-emergency,
+	#homepage-services {
+		margin-bottom: 0;
+	}
+
+	#homepage-crew {}
+
+	#homepage-emergency {}
+
+	#homepage-before-after {}
 }
 
 /*********************

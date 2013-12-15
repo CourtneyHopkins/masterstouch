@@ -523,40 +523,9 @@ COLORS
 Need help w/ choosing your colors? Try this site out:
 http://0to255.com/
 *********************/
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
 /*********************
 TYPOGRAPHY
 *********************/
-/* 	To embed your own fonts, use this syntax
-	and place your fonts inside the 
-	library/fonts folder. For more information
-	on embedding fonts, go to:
-	http://www.fontsquirrel.com/
-	Be sure to remove the comment brackets.
-*/
-/*	@font-face {
-    	font-family: 'Font Name';
-    	src: url('../fonts/font-name.eot');
-    	src: url('../fonts/font-name.eot?#iefix') format('embedded-opentype'),
-             url('../fonts/font-name.woff') format('woff'),
-             url('../fonts/font-name.ttf') format('truetype'),
-             url('../fonts/font-name.svg#font-name') format('svg');
-    	font-weight: normal;
-    	font-style: normal;
-	}
-*/
-/* 
-use the best ampersand 
-http://simplebits.com/notebook/2008/08/14/ampersands-2/
-*/
-span.amp {
-  font-family: Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', serif;
-  font-style: italic;
-}
 /* text alignment */
 .text-left {
   text-align: left;
@@ -566,39 +535,6 @@ span.amp {
 }
 .text-right {
   text-align: right;
-}
-.alert {
-  margin: 10px;
-  padding: 5px 18px;
-  border: 1px solid;
-}
-.alert-help {
-  margin: 10px;
-  padding: 5px 18px;
-  border: 1px solid;
-  border-color: #e8dc59;
-  background: #ebe16f;
-}
-.alert-info {
-  margin: 10px;
-  padding: 5px 18px;
-  border: 1px solid;
-  border-color: #bfe4f4;
-  background: #d5edf8;
-}
-.alert-error {
-  margin: 10px;
-  padding: 5px 18px;
-  border: 1px solid;
-  border-color: #f8cdce;
-  background: #fbe3e4;
-}
-.alert-success {
-  margin: 10px;
-  padding: 5px 18px;
-  border: 1px solid;
-  border-color: #deeaae;
-  background: #e6efc2;
 }
 /*********************
 BORDER RADIUS
@@ -628,95 +564,6 @@ BOX SHADOW
 /*********************
 BUTTONS
 *********************/
-.button,
-.button:visited {
-  border: 1px solid #be0d37;
-  border-top-color: #db0f3f;
-  border-left-color: #db0f3f;
-  padding: 4px 12px;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 11px;
-  font-weight: bold;
-  text-decoration: none;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.75);
-  cursor: pointer;
-  margin-bottom: 20px;
-  line-height: 21px;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  background-color: #e40f42;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f01d4f), to(#e40f42));
-  background-image: -webkit-linear-gradient(top, #f01d4f, #e40f42);
-  background-image: -moz-linear-gradient(top, #f01d4f, #e40f42);
-  background-image: -o-linear-gradient(top, #f01d4f, #e40f42);
-  background-image: linear-gradient(to bottom, #f01d4f, #e40f42);
-}
-.button:hover,
-.button:visited:hover,
-.button:focus,
-.button:visited:focus {
-  color: #ffffff;
-  border: 1px solid #be0d37;
-  border-top-color: #9d0a2d;
-  border-left-color: #9d0a2d;
-  background-color: #cc0e3b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e40f42), to(#cc0e3b));
-  background-image: -webkit-linear-gradient(top, #e40f42, #cc0e3b);
-  background-image: -moz-linear-gradient(top, #e40f42, #cc0e3b);
-  background-image: -o-linear-gradient(top, #e40f42, #cc0e3b);
-  background-image: linear-gradient(to bottom, #e40f42, #cc0e3b);
-}
-.button:active,
-.button:visited:active {
-  background-color: #f01d4f;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e40f42), to(#f01d4f));
-  background-image: -webkit-linear-gradient(top, #e40f42, #f01d4f);
-  background-image: -moz-linear-gradient(top, #e40f42, #f01d4f);
-  background-image: -o-linear-gradient(top, #e40f42, #f01d4f);
-  background-image: linear-gradient(to bottom, #e40f42, #f01d4f);
-}
-.blue-button,
-.blue-button:visited {
-  border-color: #1472ad;
-  text-shadow: 0 1px 1px #1472ad;
-  background-color: #1681c4;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1990db), to(#1681c4));
-  background-image: -webkit-linear-gradient(top, #1990db, #1681c4);
-  background-image: -moz-linear-gradient(top, #1990db, #1681c4);
-  background-image: -o-linear-gradient(top, #1990db, #1681c4);
-  background-image: linear-gradient(to bottom, #1990db, #1681c4);
-  -webkit-box-shadow: inset 0 0 3px #59b3ec;
-  -moz-box-shadow: inset 0 0 3px #59b3ec;
-  box-shadow: inset 0 0 3px #59b3ec;
-}
-.blue-button:hover,
-.blue-button:visited:hover,
-.blue-button:focus,
-.blue-button:visited:focus {
-  border-color: #116396;
-  background-color: #1472ad;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1784c9), to(#1472ad));
-  background-image: -webkit-linear-gradient(top, #1784c9, #1472ad);
-  background-image: -moz-linear-gradient(top, #1784c9, #1472ad);
-  background-image: -o-linear-gradient(top, #1784c9, #1472ad);
-  background-image: linear-gradient(to bottom, #1784c9, #1472ad);
-}
-.blue-button:active,
-.blue-button:visited:active {
-  background-color: #1990db;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1681c4), to(#1990db));
-  background-image: -webkit-linear-gradient(top, #1681c4, #1990db);
-  background-image: -moz-linear-gradient(top, #1681c4, #1990db);
-  background-image: -o-linear-gradient(top, #1681c4, #1990db);
-  background-image: linear-gradient(to bottom, #1681c4, #1990db);
-}
 /*
 BASE (MOBILE) SIZE
 This are the mobile styles. It's what people see on their phones. If
@@ -732,11 +579,10 @@ Stylesheet: Base Mobile Stylesheet
 html,
 body {
   /* height: 100%; */
-  background: #5a6351;
+  background: #555837;
 }
 body {
-  font-family: "Georgia", Cambria, Times New Roman, Times, serif;
-  font-size: 100%;
+  font-family: "Kelly Slab", Cambria, Times New Roman, Times, serif;
   line-height: 1.5;
   color: #565656;
 }
@@ -747,33 +593,37 @@ body {
   width: 96%;
   margin: 0 auto;
 }
+.shadow {
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+}
 #container {
   background: #ebebeb;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
 }
 /*********************
 04. LINK STYLES
 *********************/
 a,
 a:visited {
-  color: #f01d4f;
-  /* on hover */
-  /* on click */
-  /* mobile tap color */
+  color: #ebebeb;
+  font-family: "Kelly Slab", serif;
+  text-decoration: none;
 }
 a:hover,
 a:visited:hover,
 a:focus,
-a:visited:focus {
-  color: #d10e3c;
-}
-a:link,
-a:visited:link {
-  /*
-		this highlights links on iPhones/iPads.
-		so it basically works like the :hover selector
-		for mobile devices.
-		*/
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+a:visited:focus,
+a:active,
+a:visited:active {
+  color: #b8b8b8;
+  text-decoration: underline;
 }
 /******************************************************************
 05. H1, H2, H3, H4, H5 STYLES
@@ -788,7 +638,7 @@ h4,
 .h4,
 h5,
 .h5 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
   text-rendering: optimizelegibility;
   font-weight: 400;
   /*
@@ -841,60 +691,145 @@ h5,
 *********************/
 .header {
   color: #ebebeb;
-  /* end .nav */
+  background: url(../images/metal_background.jpg) repeat;
+  height: 160px;
+}
+.header #site-title {
+  font-family: "Mate SC", serif;
+  color: #202020;
+  text-align: center;
+  font-weight: 700;
 }
 .header #inner-header {
   width: 100%;
   height: 77px;
-  background: url(../images/green_fabric_bg.png) repeat-x #ebebeb;
+  background: url(../images/green_fabric_bg.png) repeat-x;
+  /* end .nav */
+}
+.header #inner-header .nav {
+  border-bottom: 0;
+}
+.header #inner-header .nav a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  text-transform: uppercase;
+  font-family: "Kelly Slab", serif;
+  font-size: 1.2rem;
+}
+.header #inner-header .nav a:hover,
+.header #inner-header .nav a:focus {
+  text-decoration: none !important;
 }
 .header img#logo {
   width: 80px;
   position: relative;
   margin: 0 auto;
 }
-.header .nav {
-  border-bottom: 0;
-  /* end .menu li */
-  /* highlight current page */
-  /* end current highlighters */
-}
-.header .nav li a {
-  display: block;
-  text-decoration: none;
-  padding: 10px 10px;
-  background-color: #eee;
-  border-bottom: 1px solid #ccc;
-  color: #333333;
-  text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.header .nav li a:hover,
-.header .nav li a:focus {
-  color: #333333;
-}
-.header .nav li ul.sub-menu li a,
-.header .nav li ul.children li a {
-  padding-left: 30px;
-}
-/*********************
-07. NAVIGATION STYLES
-*********************/
 /*********************
 HOMEPAGE
 *********************/
 #homepage-slideshow {
   background: #ebebeb;
 }
-.featured-area {
-  background: #ebebeb;
+#tagline {
+  background: url(../images/wood.jpg) no-repeat;
+  height: 100px;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 25px;
+  color: #202020;
+  font-weight: 700;
+}
+#tagline p {
+  padding: 5% 5px;
+}
+#homepage-content {
+  background: #202020;
+  padding: 20px;
 }
 .featured-area .homepage-featured {
   border-radius: 5px;
   background: #333333;
   height: 300px !important;
+}
+.featured-area #homepage-crew,
+.featured-area #homepage-emergency,
+.featured-area #homepage-services {
+  border-radius: 4px;
+  background: #555837;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.featured-area #homepage-crew .label,
+.featured-area #homepage-emergency .label,
+.featured-area #homepage-services .label {
+  background: #d2d2d2;
+  border-radius: 2px 2px 0 0;
+  padding: 20px 0;
+}
+.featured-area #homepage-crew .label img,
+.featured-area #homepage-emergency .label img,
+.featured-area #homepage-services .label img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto;
+}
+.featured-area #homepage-crew .label span,
+.featured-area #homepage-emergency .label span,
+.featured-area #homepage-services .label span {
+  text-transform: uppercase;
+  color: #202020 !important;
+  font-weight: 700;
+}
+.featured-area #homepage-crew .divisor,
+.featured-area #homepage-emergency .divisor,
+.featured-area #homepage-services .divisor {
+  background: url(../images/wood.jpg) repeat-x center left;
+  height: 10px !important;
+}
+.featured-area #homepage-crew .desc,
+.featured-area #homepage-emergency .desc,
+.featured-area #homepage-services .desc {
+  font-family: "Strait", Helvetica, Arial, sans-serif !important;
+  padding: 0 20px 10px 20px;
+}
+.featured-area #homepage-crew a:hover,
+.featured-area #homepage-emergency a:hover,
+.featured-area #homepage-services a:hover,
+.featured-area #homepage-crew a:active,
+.featured-area #homepage-emergency a:active,
+.featured-area #homepage-services a:active,
+.featured-area #homepage-crew a:focus,
+.featured-area #homepage-emergency a:focus,
+.featured-area #homepage-services a:focus {
+  text-decoration: none !important;
+  color: #ffffff !important;
+}
+.featured-area #homepage-crew:hover,
+.featured-area #homepage-emergency:hover,
+.featured-area #homepage-services:hover,
+.featured-area #homepage-crew:active,
+.featured-area #homepage-emergency:active,
+.featured-area #homepage-services:active,
+.featured-area #homepage-crew:focus,
+.featured-area #homepage-emergency:focus,
+.featured-area #homepage-services:focus {
+  background: #73774b;
+}
+.featured-area #homepage-crew:hover .label,
+.featured-area #homepage-emergency:hover .label,
+.featured-area #homepage-services:hover .label,
+.featured-area #homepage-crew:active .label,
+.featured-area #homepage-emergency:active .label,
+.featured-area #homepage-services:active .label,
+.featured-area #homepage-crew:focus .label,
+.featured-area #homepage-emergency:focus .label,
+.featured-area #homepage-services:focus .label {
+  background: #ffffff;
 }
 /*********************
 08. POSTS & CONTENT STYLES
@@ -1218,7 +1153,7 @@ HOMEPAGE
 *********************/
 .footer {
   clear: both;
-  background: #5a6351;
+  background: #555837;
 }
 .footer #inner-footer {
   color: #ebebeb;
@@ -1418,86 +1353,76 @@ GENERAL STYLES
 LAYOUT & GRID STYLES
 *********************/
   .wrap {
-    max-width: 1400px;
+    max-width: 1200px;
   }
   /*********************
 HEADER STYLES
 *********************/
   .header {
-    padding-top: 30px;
+    padding-top: 0;
   }
-  .header #logo {
-    width: 150px !important;
-    margin: -35px auto 0 auto !important;
+  .header #site-title {
+    font-size: 2.3rem;
+    margin: 15px 0;
   }
-  /*********************
-NAVIGATION STYLES
-*********************/
-  .nav {
-    float: right;
-    margin: 0;
-    /* end .menu ul li */
-    /* highlight current page */
-    /* end current highlighters */
+  .header #inner-header {
+    width: 100%;
+    /* end .nav */
   }
-  .nav li {
-    float: left;
+  .header #inner-header .nav-container {
+    width: 575px;
+    margin: 0 auto;
     position: relative;
-    /*
-		plan your menus and drop-downs wisely.
-		*/
-    /* showing sub-menus */
   }
-  .nav li a {
+  .header #inner-header .nav {
+    margin: 0;
+    padding-top: 15px;
+  }
+  .header #inner-header .nav a {
     border-bottom: 0;
     background: none !important;
     color: #ebebeb;
+    float: left;
+    padding: 10px 20px;
   }
-  .nav li a:hover,
-  .nav li a:focus {
-    background-color: #dedede;
+  .header #inner-header .nav a:hover,
+  .header #inner-header .nav a:focus {
+    color: #b8b8b8;
+    text-decoration: none !important;
   }
-  .nav li ul.sub-menu,
-  .nav li ul.children {
-    margin-top: 0;
-    border: 1px solid #ccc;
-    border-top: 0;
-    position: absolute;
-    display: none;
-    z-index: 8999;
-    /* highlight sub-menu current page */
+  .header #logo {
+    width: 115px !important;
+    margin: -18px auto 0 auto !important;
   }
-  .nav li ul.sub-menu li,
-  .nav li ul.children li {
-    /*
-				if you need to go deeper, go nuts
-				just remember deeper menus suck
-				for usability. k, bai.
-				*/
-  }
-  .nav li ul.sub-menu li a,
-  .nav li ul.children li a {
-    padding-left: 10px;
-    border-right: 0;
-    display: block;
-    width: 180px;
-    border-bottom: 1px solid #ccc;
-  }
-  .nav li ul.sub-menu li:last-child a,
-  .nav li ul.children li:last-child a {
-    border-bottom: 0;
-  }
-  .nav li:hover ul {
-    top: auto;
-    display: block;
-  }
-  /* end .nav */
   /*********************
 CONTENT & POSTS
 *********************/
   #homepage-slideshow {
     width: 100%;
-    height: 400px;
+    height: 250px;
+  }
+  #tagline {
+    font-size: 1.7rem;
+    text-align: center;
+    color: #202020;
+    line-height: 30px;
+  }
+  #tagline p {
+    padding: 20px 20%;
+  }
+  #homepage-content {
+    padding: 40px;
+  }
+  .featured-area {
+    max-width: 840px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  .featured-area #homepage-crew,
+  .featured-area #homepage-emergency,
+  .featured-area #homepage-services {
+    margin-bottom: 0;
   }
   /*********************
 SIDEBARS & ASIDES

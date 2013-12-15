@@ -20,18 +20,27 @@
 		<meta name="msapplication-TileColor" content="#f01d4f">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+		<link href='http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC|Kelly+Slab|Mate+SC|Strait' rel='stylesheet' type='text/css'>
 		<?php wp_head(); ?>
 	</head>
 
 	<body>
 		<div id="container">
-			<header class="header" role="banner">
+			<header class="header clearfix" role="banner">
+				<p id="site-title"><?php bloginfo('name'); ?></p>
 				<div id="inner-header" class="clearfix">
-					<a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/mt_logo.png" id="logo" alt="Master's Touch Tree Service Logo" /></a>	
-					<!-- <p id="logo"><?php //bloginfo('name'); ?><a href="<?php //echo home_url(); ?>" rel="nofollow"></a></p> -->
-					<nav role="navigation">
-						<?php bones_main_nav(); ?>
-					</nav>
+					<div class="nav-container">
+						<div class="nav left">
+							<a href="masterstouch.com/about/">About</a>
+							<a href="masterstouch.com/services/">Services</a>
+						</div>
+						<div class="left">
+							<a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/mt_logo.png" id="logo" alt="Master's Touch Tree Service Logo" /></a>	
+						</div>
+						<div class="nav left">
+							<a href="masterstouch.com/gallery/">Gallery</a>
+							<a href="masterstouch.com/contact/">Contact</a>
+						</div>	
+					</div>
 				</div>
 			</header>
-		</div>	

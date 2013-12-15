@@ -12,7 +12,6 @@ html, body {
 }
 body {
 	font-family: @serif;
-	font-size: 100%;
 	line-height: 1.5;
 	color: #565656;
 }
@@ -25,35 +24,33 @@ body {
 	width: 96%;
 	margin: 0 auto;
 }
+.shadow {
+	.boxShadow(0px; 0px; 10px; 2px;);
+}
+
 #container {
 	background: @light-gray;
 }
 
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
 /*********************
 04. LINK STYLES
 *********************/
 
 a, a:visited {
 	color: @link-color;
+	font-family: @soviet;
+	text-decoration: none;
 
-	/* on hover */
-	&:hover, &:focus {
+	&:hover, &:focus, &:active {
 		color: @link-hover;
-	}
-
-	/* on click */
-	&:active {
-
-	}
-
-	/* mobile tap color */
-	&:link {
-		/*
-		this highlights links on iPhones/iPads.
-		so it basically works like the :hover selector
-		for mobile devices.
-		*/
-		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+		text-decoration: underline;
 	}
 }
 
@@ -109,12 +106,39 @@ h5, .h5 {
 
 .header {
 	color: #ebebeb;
+	background: url(../images/metal_background.jpg) repeat;
+	height: 160px;
 	
+	#site-title {
+		font-family: @greek;
+		color: @dark-gray;
+		text-align: center;
+		font-weight: 700;
+	}
 	
 	#inner-header {
 		width: 100%;
 		height: 77px;
-		background: url(../images/green_fabric_bg.png) repeat-x @light-gray;
+		background: url(../images/green_fabric_bg.png) repeat-x;
+
+		.nav-container {}
+		
+		.nav {
+			border-bottom: 0;
+
+			a {
+				display: block;
+				text-decoration: none;
+				padding: 10px;
+				text-transform: uppercase;
+				font-family: @soviet;
+				font-size: 1.2rem;
+
+				&:hover, &:focus {
+					text-decoration: none !important;
+				}
+			}
+		} /* end .nav */
 	}
 
 	img#logo {
@@ -122,89 +146,7 @@ h5, .h5 {
 		position: relative;
 		margin: 0 auto;
 	}
-	
-	nav {
-		div.top-nav {
-			ul {
-				li {	
-					a {}
-	
-					&:first-child {}
-	
-					&:last-child {}
-				}
-			}
-		}
-	}
-
-	.nav {
-		border-bottom: 0;
-
-		li {
-
-			a {
-				display: block;
-				text-decoration: none;
-				padding: 10px 10px;
-				background-color: #eee;
-				border-bottom: 1px solid #ccc;
-				color: #333333;
-				text-transform: uppercase;
-				font-family: @sans-serif;
-				font-weight: 700;
-				letter-spacing: 1px;
-
-				&:hover, &:focus {
-					color: #333333;
-				}
-			}
-
-			&:first-child {}
-
-			&:last-child {}
-
-			ul.sub-menu,
-			ul.children {
-
-				li {
-
-					a {
-						padding-left: 30px;
-
-						&:hover,
-						&:focus {}
-
-						&:link {}
-
-					}
-
-					&:first-child {}
-
-					&:last-child {}
-
-				}
-
-			}
-
-		} /* end .menu li */
-
-		/* highlight current page */
-		li.current-menu-item,
-		li.current_page_item,
-		li.current_page_ancestor {
-
-			a {}
-
-		}  /* end current highlighters */
-
-	} /* end .nav */
 }
-
-/*********************
-07. NAVIGATION STYLES
-*********************/
-
-
 
 /*********************
 HOMEPAGE
@@ -214,8 +156,28 @@ HOMEPAGE
 	background: @light-gray;
 }
 
+#tagline {
+	background: url(../images/wood.jpg) no-repeat; 
+	height: 100px;
+	font-family: @sans-serif;
+	font-style: italic;
+	font-size: 1.2rem;
+	text-align: center;
+	line-height: 25px;
+	color: @dark-gray;
+	font-weight: 700;
+
+	p {
+		padding: 5% 5px;
+	}
+}
+
+#homepage-content {
+	background: @dark-gray;
+	padding: 20px;
+}
+
 .featured-area {
-	background: #ebebeb;
 	
 	.homepage-featured {
 		border-radius: 5px;
@@ -223,11 +185,58 @@ HOMEPAGE
 		height: 300px !important;
 	}
 
-	#homepage-crew {}
+	#homepage-crew,
+	#homepage-emergency,
+	#homepage-services {
+		border-radius: 4px;
+		background: @green;
+		text-align: center;
+		margin-bottom: 40px;
 
-	#homepage-emergency {}
+		.label {
+			background: darken(@light-gray, 10%);
+			border-radius: 2px 2px 0 0;
+			padding: 20px 0;
 
-	#homepage-before-after {}
+			img {
+				width: 100px;
+				height: 100px;
+				position: relative;
+				margin: 0 auto;
+			}
+
+			span {
+				text-transform: uppercase;
+				color: @dark-gray !important;
+				font-weight: 700;
+			}
+		}
+
+		.divisor {
+			background: url(../images/wood.jpg) repeat-x center left;
+			height: 10px !important;
+		}
+
+		.desc {
+			font-family: @sans-serif !important;
+			padding: 0 20px 10px 20px;
+		}
+
+		a {
+			&:hover, &:active, &:focus {
+				text-decoration: none !important;
+				color: @white !important;
+			}
+		}
+
+		&:hover, &:active, &:focus {
+			background: lighten(@green, 10%);
+
+			.label {
+				background: lighten(@light-gray, 20%);
+			}
+		}
+	}
 }
 
 /*********************

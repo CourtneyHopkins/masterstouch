@@ -1,3 +1,4 @@
+		
 		<footer class="footer" role="contentinfo">
 			<div id="inner-footer" class="wrap clearfix">
 				<nav role="navigation">
@@ -7,5 +8,6 @@
 			</div>
 		</footer>
 		<?php wp_footer(); ?>
+	</div>
 	</body>
 </html>
