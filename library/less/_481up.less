@@ -21,46 +21,26 @@ upon your base.less styles.
 NAVIGATION STYLES
 *********************/
 
-.nav {}
 
-	/* .menu is clearfixed inside mixins.scss */
-	.menu {
-		ul {
-			li {
-				a {
-					&:hover, &:focus {
-					
-					}
-				}
-				
-				&:first-child {}
-				&:last-child {}
-				
-				/*
-				plan your menus and drop-downs wisely.
-				*/
-				ul.sub-menu,
-				ul.children {
-					li {
-						a {
-							&:hover,
-							&:focus {}
-							&:link {}
-						}
-						&:first-child {}
-						&:last-child {}
-					}
-				}
-			} /* end .menu ul li */
-			
-			/* highlight current page */
-			li.current-menu-item, 
-			li.current_page_item,
-			li.current-page-ancestor {
-				a {}
-			}  /* end current highlighters */
-		} /* end .menu ul */
-	} /* end .menu */
+#homepage-slideshow {
+	background: @light-gray;
+	//max-height: 250px;
+	height: auto;
+	display: block !important;
+
+	img {
+		max-width: 1200px;
+		width: 100%;
+	}
+
+	.flex-caption {
+		margin-top: -10%; 
+	}
+}
+
+#tagline {
+	margin-top: 3%;
+}
 
 /*********************
 POSTS & CONTENT STYLES
@@ -98,6 +78,9 @@ FOOTER STYLES
 check your menus here. do they look good?
 do they need tweaking?
 */
+.footer {
+	text-align: left;
+}
 .footer-links {
 	ul {
 		li {}

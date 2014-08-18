@@ -8,7 +8,7 @@ Stylesheet: Base Mobile Stylesheet
 
 html, body {
 	/* height: 100%; */
-	background: @green;
+	background: @dark-green;
 }
 body {
 	font-family: @serif;
@@ -16,12 +16,16 @@ body {
 	color: #565656;
 }
 
+p {
+	font-size: 1.1rem;
+}
+
 /*********************
 03. LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	width: 96%;
+	// width: 96%;
 	margin: 0 auto;
 }
 .shadow {
@@ -29,7 +33,7 @@ body {
 }
 
 #container {
-	background: @light-gray;
+	background: darken(@green, 18%);
 }
 
 .right {
@@ -38,6 +42,11 @@ body {
 
 .left {
 	float: left;
+}
+
+.divisor {
+	background: url(../images/wood.jpg) repeat-x center left;
+	height: 10px !important;
 }
 /*********************
 04. LINK STYLES
@@ -54,14 +63,21 @@ a, a:visited {
 	}
 }
 
+p {
+	font-family: @sans-serif;
+}
+
 /******************************************************************
 05. H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-	font-family: @sans-serif;
+	font-family: @serif;
 	text-rendering: optimizelegibility;
 	font-weight: 400;
+	margin-bottom: 0;
+	margin-top: 10px;
+
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -106,22 +122,56 @@ h5, .h5 {
 
 .header {
 	color: #ebebeb;
-	background: url(../images/metal_background.jpg) repeat;
-	height: 160px;
+	background: url(../images/wood-long-color.jpg) repeat-x @dark-green;
+	height: 149px;
+
+	.preface {
+		width: 96%;
+		max-width: 1200px;
+		margin: 0 auto;
+		position: relative;
+	}
 	
 	#site-title {
-		font-family: @greek;
 		color: @dark-gray;
 		text-align: center;
 		font-weight: 700;
+		font-size: 1.5rem;
+		width: 250px;
+		padding: 10px 0;
+		line-height: 25px;
+		margin: 0 auto;
+		position: relative;
+
+		a {
+			font-family: @greek !important;
+			color: @dark-gray;
+
+			&:hover, &:active, &:focus {
+				color: @dark-gray;	
+				text-decoration: none;			
+			}
+
+			span {
+				font-size: 1.3rem;
+				font-family: @sans-serif !important;
+				text-transform: uppercase;
+			}
+		}
 	}
+
+	#header-phone {
+		display:none;
+	}	
 	
 	#inner-header {
 		width: 100%;
-		height: 77px;
-		background: url(../images/green_fabric_bg.png) repeat-x;
+		height: 66px;
+		background: url(../images/green_fabric_bg.png) repeat-x @dark-green;
 
-		.nav-container {}
+		.nav-container {
+			display:none;
+		}
 		
 		.nav {
 			border-bottom: 0;
@@ -139,12 +189,48 @@ h5, .h5 {
 				}
 			}
 		} /* end .nav */
+
+		.mobile-nav-button {
+			width: 75px;
+			padding: 5px 10px;
+			border-radius: 2px;
+			background: @dark-green;
+			text-align: center;
+			cursor: pointer;
+			margin: 20px 20px 0 0;
+			float: right;
+			font-weight: 700;
+		}
+
+		.mobile-phone {
+			float: left;
+			font-size: 1.2rem;
+			padding: 23px 0 0 10px;
+		}
+
+		.background-green {
+			background: lighten(@green, 20%);
+		}
 	}
 
 	img#logo {
-		width: 80px;
+		width: 100px;
 		position: relative;
 		margin: 0 auto;
+		z-index: 9999;
+	}
+}
+
+.mobile-nav-container {
+	.nav {
+		a {
+			display:block;
+			float: none;
+			padding: 20px 10%;
+			border-bottom: 1px solid @green;
+			font-size: 1.3rem;
+			text-transform: uppercase;
+		}
 	}
 }
 
@@ -153,7 +239,7 @@ HOMEPAGE
 *********************/
 
 #homepage-slideshow {
-	background: @light-gray;
+	display:none;
 }
 
 #tagline {
@@ -166,41 +252,63 @@ HOMEPAGE
 	line-height: 25px;
 	color: @dark-gray;
 	font-weight: 700;
-
+	.boxShadow(0px; 2px; 31px; 5px;);
+	
 	p {
 		padding: 5% 5px;
+		margin: 0;
 	}
 }
 
 #homepage-content {
-	background: @dark-gray;
+	background: lighten(@green, 50%);
 	padding: 20px;
+	-webkit-box-shadow: inset 0 0 18px @dark-gray;
+	   -moz-box-shadow: inset 0 0 18px @dark-gray;
+			box-shadow: inset 0 0 18px @dark-gray;
 }
 
 .featured-area {
-	
+
 	.homepage-featured {
-		border-radius: 5px;
+		border-radius: 8px;
 		background: #333333;
-		height: 300px !important;
+		&:hover {
+			.boxShadow(0px; 0px; 6px; 3px; rgba(0,0,0,0.2)) !important;
+			/* Webkit for Chrome and Safari */
+			 -webkit-transform: scale(1.03, 1.03); // This is the scale for the normal size of the image.
+			 -webkit-transition-duration: 200ms;
+			 -webkit-transition-timing-function: ease-out;
+			
+			 /* Webkit for Mozila Firefox */
+			 -moz-transform: scale(1.03, 1.03);
+			 -moz-transition-duration: 200ms;
+			 -moz-transition-timing-function: ease-out;
+			
+			 /* Webkit for IE( Version: 11, 10 ) */
+			 -ms-transform: scale(1.03, 1.03);
+			 -ms-transition-duration: 200ms;
+			 -ms-transition-timing-function: ease-out;
+		}
 	}
 
 	#homepage-crew,
 	#homepage-emergency,
 	#homepage-services {
-		border-radius: 4px;
-		background: @green;
+		border-radius: 8px;
+		background: lighten(@green, 10%);
 		text-align: center;
 		margin-bottom: 40px;
+		.boxShadow(0px; 0px; 5px; 2px; rgba(0,0,0,0.2));
 
 		.label {
-			background: darken(@light-gray, 10%);
-			border-radius: 2px 2px 0 0;
+			background: @white;
+			border-radius: 8px 8px 0 0;
 			padding: 20px 0;
 
 			img {
 				width: 100px;
-				height: 100px;
+				height: auto;
 				position: relative;
 				margin: 0 auto;
 			}
@@ -209,12 +317,8 @@ HOMEPAGE
 				text-transform: uppercase;
 				color: @dark-gray !important;
 				font-weight: 700;
+				font-size: 1.2rem;
 			}
-		}
-
-		.divisor {
-			background: url(../images/wood.jpg) repeat-x center left;
-			height: 10px !important;
 		}
 
 		.desc {
@@ -228,14 +332,6 @@ HOMEPAGE
 				color: @white !important;
 			}
 		}
-
-		&:hover, &:active, &:focus {
-			background: lighten(@green, 10%);
-
-			.label {
-				background: lighten(@light-gray, 20%);
-			}
-		}
 	}
 }
 
@@ -244,163 +340,294 @@ HOMEPAGE
 *********************/
 
 #content {
-background: #ebebeb;
+	background: @dark-green;
 
 	#inner-content {
+		background: @light-gray;
 		max-width: 1080px;
+		padding: 0 20px;	
+
+		.page-header-wrapper {
+			text-align: center;
+			margin: 20px 0 20px 0;
+
+			p {
+				clear: left;
+				margin-top: 0;
+				font-size: 1.3rem;
+				line-height: 20px;
+				padding: 0;
+				color: lighten(@green, 15%);
+			}
+
+			.phone {
+				font-size: 1.8rem;
+				color: @dark-green;
+				margin-bottom: 20px;
+			}
+		}
 	}
 }
 
-		.hentry {
+.services {
 
-			header {}
+	#inner-services {
+		background: @light-gray;
+		max-width: 1080px;
+		margin: 0 auto;
+		position: relative;
+		padding: 30px 25px;	
 
-			footer {}
+		.page-header-wrapper {
+			text-align: center;
+			margin-bottom: 50px;
 
-		} /* end .hentry */
-
-		.single-title,
-		.page-title {}
-
-		.single-title {}
-
-		.page-title {}
-
-		.archive-title { }
-
-		/* want to style individual post classes? Booya! */
-		.post-id {}         /* post by id (i.e. post-3) */
-		.post {}            /* general post style */
-		.page {}            /* general article on a page style */
-		.attachment {}      /* general style on an attatchment */
-		.sticky {}          /* sticky post style */
-		.hentry {}          /* hentry class */
-		.category-slug {}   /* style by category (i.e. category-videos) */
-		.tag-slug {}        /* style by tag (i.e. tag-news) */
-
-		/* post meta */
-		.byline {
-			color: #999;
-
-			time {}
+			p {
+				clear: left;
+				margin-top: 0;
+				font-size: 1.3rem;
+				line-height: 20px;
+				padding: 0;
+				color: lighten(@green, 15%);
+			}
 		}
 
-		/* entry content */
-		.entry-content {
+		.row {
+			margin-bottom: 30px;
+		}
 
-			p {}
+		.service-title {
+			text-align: left;
+			// color: lighten(@green, 15%);
+			color: @dark-green;
+			border-bottom: 3px solid lighten(@green, 50%);
+			font-size: 1.3rem;
+			width: 100%;
+		}
+
+		.service-description {
+			font-family: @sans-serif;
+			border-radius: 3px;
+			margin-top: 10px;
+		}
+	}
+}
+
+.testimonial-group {
+	display: none;
+}
+
+.employee-slider {
+	display:none;
+}
+
+.mobile-emp {
+	margin-top: 0;
+	color: @light-gray;
+
+	li {
+		border-bottom: 5px solid lighten(@green, 23%);
+		padding: 20px;
+
+		&:nth-child(odd) {
+			background: lighten(@green, 10%);
+		}
+
+		&:nth-child(even) {
+			background: lighten(@green, 17%);
+		}
+
+		span {
+			font-size: 1.7rem;
+			font-family: @soviet;
+			margin-bottom: 0;
+		}
+
+		.job-title {
+			margin-top: 0;
+			font-style: italic;
+		}
+	}
+}	
+
+#inner-gallery	{
+	padding: 0 2%;
+	background: @light-gray;
+	max-width: 1080px;
+
+	.page-header-wrapper {
+		text-align: center;
+		margin: 20px 0 20px 0;
+
+		p {
+			clear: left;
+			margin-top: 0;
+			font-size: 1.3rem;
+			padding: 0;
+			color: lighten(@green, 15%);
+		}
+	}
+
+	.green {
+		background: darken(@green, 17%);
+		padding: 15px 15px 10px;
+	}
+
+	.row {
+		display:none;
+		margin-bottom: 15px;
+	}
+
+	h2 {
+		margin-top: 10px;
+		font-family: @sans-serif !important;
+		margin-bottom: 0;
+	}
+
+	.row, 
+	.mobile-row {
+		//background: url('../images/wood.jpg'); 
+	}
+
+	img {
+		max-width: 700px;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.gallery-thumb-wrapper {
+	width: 100%;
+	text-align: left;
+	width: 100%;
+	height: auto;
+	.border-radius(4px);
+
+	.gallery-thumb {
+		border-top: 8px solid @green;
+		background: url(../images/RedWoodLarge.jpg);
+		background-size: 500px 250px;
+		background-position: bottom;
+		margin-bottom: 40px;
+		.border-radius(4px);
+		.boxShadow(0px; 0px; 5px; 0px;);
+
+		img {
+			.border-radius(4px);
+			-webkit-filter: grayscale(100%);
+	        -moz-filter: grayscale(100%);
+	        filter: grayscale(100%);
+		}
+
+		p {
+			// color: lighten(@green, 50%);
+			color: @light-gray;
+			text-decoration: none;
+			text-transform: uppercase;
+			padding: 10px 15px;
+			margin: 0;
+		}
+	}
+
+	&:hover {
+		text-decoration: none;
+		.transition(all,4s);
 
 
-			ul, ol, table, dl {}
-
-			ul, ol {
-
-				li {}
-
-			}
-
-			ul {
-
-				li {}
-
-			}
-
-			ol {
-
-				li {}
-
-			}
-
-			blockquote {
-
-				&:before {}
-
-			}
-
-			dl {}
-
-			dt {}
-
-			dd {
-				margin-left: 0;
-				font-size: 0.9em;
-				color: #787878;
-				margin-bottom: 1.5em;
-			}
+		.gallery-thumb {
+			border-top: 8px solid darken(@green, 8%);
 
 			img {
-				margin: 0 0 1.5em 0;
-				max-width: 100%;
-				height: auto;
+				-webkit-filter: grayscale(0);
+	            -moz-filter: grayscale(0);
+	            filter: grayscale(0);
 			}
 
-			/*
-			image alignment on a screen this size may be
-			a bit difficult. It's set to start aligning
-			and floating images at the next breakpoint,
-			but it's up to you. Feel free to change it up.
-			*/
-			.alignleft, img.alignleft {}
-			.alignright, img.alignright {}
-			.aligncenter, img.aligncenter {}
-
-			video, object {
-				max-width: 100%;
-				height: auto;
+			p {
+				color: lighten(@green, 50%);
 			}
+		}	
+	}
+}
 
-			pre {
-				background: #eee;
-				border: 1px solid #cecece;
-				padding: 10px;
-			}
+.gallery-slideshow {
+	margin: 40px 0 40px 0;
 
-		} /* end .entry-content */
+	img {
+		width: 100%;
+		height: auto;
+		float: left;
+		border-bottom: 2px solid @dark-green;
+		background: @green;
+		.boxShadow(0px; 0px; 6px; 3px; rgba(0,0,0,0.2));
+	}
 
-		.wp-caption {
-			max-width: 100%;
-			background: #eee;
-			padding: 5px;
+	p {
+		text-align: left;
+		font-size:16px;
+		line-height: 25px;
+		color: @light-gray;
+		background: @green;
+		margin: 0;
+		padding: 20px;
+		border-top: 5px solid @dark-green;
+		.boxShadow(0px; 0px; 6px; 3px; rgba(0,0,0,0.2));
+	}
+}
 
-			/* images inside wp-caption */
-			img {
-				max-width: 100%;
-				margin-bottom: 0;
-				width: 100%;
-			}
+.contact-form {
+	text-align: left;
+	width: 96%;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 20px;
 
-			p.wp-caption-text {
-				font-size: 0.85em;
-				margin: 4px 0 7px;
-				text-align: center;
-			}
+	p {
+		color: lighten(@green, 20%) !important;
+		font-size: 1.2rem !important;
+		text-transform: uppercase;
+		padding: 0 !important;
+	}
 
-		} /* end .wp-caption */
+	input[type='text'], 
+	input[type='email'],
+	input[type='tel'] {
+		background: none;
+		box-shadow: none;
+		height: 30px;
+		border-bottom: 2px solid lighten(@green, 20%);
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		width: 100%;
+	}
 
-		/* image gallery styles */
-		.gallery {
+	.left {
+		float: none;
+		width: 100%;
+	}
 
-			dl {
+	.right {
+		float: none;
+		width: 100%;
+	}
 
-				a {}
+	textarea {
+		background: lighten(@green, 55%);
+		border: none;
+		width: 100%;
+	}
 
-				img {}
-
-			}
-
-			dt {}
-
-			dd {}
-
-		} /* end .gallery */
-
-		/* gallery caption styles */
-		.gallery-caption {}
-
-		.size-full {}
-		.size-large {}
-		.size-medium {}
-		.size-thumbnail {}
+	input[type='submit'] {
+		background: lighten(@dark-green, 10%);
+		color: @light-gray;
+		font-family: @soviet;
+		border: none;
+		font-size: 1rem;
+		padding: 10px;
+		border-radius: 3px;
+	}
+}
 
 /******************************************************************
 09. PAGE NAVI STYLES
@@ -513,314 +740,30 @@ background: #ebebeb;
 
 	} /* end .wp-prev-next */
 
-/******************************************************************
-10. COMMENT STYLES
-******************************************************************/
-
-/* h3 comment title */
-#comments {
-
-	/* number of comments span */
-	span {}
-
-}
-
-.comment-nav {
-
-	ul {
-
-		li {}
-
-	}
-}
-
-
-.commentlist {
-
-	li {
-		position: relative;
-		clear: both;
-		overflow: hidden;
-		list-style-type: none;
-		margin-bottom: 1.5em;
-		padding: 0.7335em 10px;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-
-		ul.children {
-			margin: 0;
-
-			li {}
-
-			/* variations */
-			.comment {}
-			.alt {}
-			.odd {}
-			.even {}
-			.depth-1 {}           /* change number for different depth */
-			.byuser {}
-			.bypostauthor {}
-			.comment-author-admin {}
-
-		} /* end .commentlist li ul.children */
-	}
-
-	li[class*=depth-] {
-		margin-top: 1.1em;
-	}
-
-	li.depth-1 {
-		margin-left: 0;
-		margin-top: 0;
-	}
-
-	li:not(.depth-1) {
-		margin-right: -10px;
-		margin-left: -10px;
-		margin-top: 0;
-		padding-bottom: 0;
-	}
-
-	li.depth-2 {}
-	li.depth-3 {}
-	li.depth-4 {}
-	li.depth-5 {}
-
-	/* general comment classes */
-	.alt {}
-	.odd {
-		background: #eee;
-	}
-	.even {
-		background: #fefefe;
-	}
-	.parent {}
-	.comment {}
-	.children {}
-	.pingback {}
-	.bypostauthor {}
-	.comment-author {}
-	.comment-author-admin {}
-	.thread-alt {}
-	.thread-odd {}
-	.thread-even {}
-
-	/* vcard */
-	.vcard {
-		margin-left: 50px;
-
-		cite.fn {
-			font-weight: 700;
-			font-style: normal;
-
-			a.url {}
-
-		}
-
-		time {
-			float: right;
-
-			a {
-				color: #999;
-				text-decoration: none;
-
-				&:hover {
-					text-decoration: underline;
-				}
-
-			}
-
-		}
-
-		img.photo {}
-
-		img.avatar {
-			position: absolute;
-			left: 10px;
-			padding: 2px;
-			border: 1px solid #cecece;
-			background: #fff;
-		}
-
-	} /* end .commentlist .vcard */
-
-
-	/* comment meta */
-	.comment-meta {
-
-		a {}
-
-	}
-
-	.commentmetadata {
-
-		a {}
-
-	}
-
-	/* comment content */
-	.comment_content {
-		margin-left: 50px;
-
-		p {
-			margin: 0.7335em 0 1.5em;
-			font-size: 1em;
-			line-height: 1.5em;
-		}
-
-	} /* end .commentlist .comment_content */
-
-	/* comment reply link */
-	.comment-reply-link {
-		text-decoration: none;
-		float: right;
-		background: #4598bb;
-		padding: 3px 5px;
-		color: #fff;
-		opacity: 0.65;
-		margin-bottom: 10px;
-		font-weight: 700;
-		font-size: 0.9em;
-
-		&:hover,
-		&:focus {
-			opacity: 1;
-		}
-
-	} /* end .commentlist .comment-reply-link */
-
-} /* end .commentlist */
-
-/******************************************************************
-11. COMMENT FORM STYLES
-******************************************************************/
-
-.respond-form {
-	margin: 1.5em 10px;
-	padding-bottom: 2.2em;
-
-	form {
-		margin: 0.75em 0;
-
-		li {
-			list-style-type: none;
-			clear: both;
-			margin-bottom: 0.7335em;
-
-			label,
-			small {
-				display: none;
-			}
-		}
-
-		input[type=text],
-		input[type=email],
-		input[type=url],
-		textarea {
-			padding: 3px 6px;
-			background: #efefef;
-			border: 2px solid #cecece;
-			line-height: 1.5em;
-
-			&:focus {
-				background: #fff;
-			}
-
-			/* form validation */
-			&:invalid {
-				outline: none;
-				border-color: #fbc2c4;
-				background-color: #f6e7eb;
-				-webkit-box-shadow: none;
-				   -moz-box-shadow: none;
-				    -ms-box-shadow: none;
-						box-shadow: none;
-			}
-		}
-
-		input[type=text],
-		input[type=email],
-		input[type=url] {
-			max-width: 400px;
-			min-width: 250px;
-		}
-
-		textarea {
-			resize: none;
-			width: 97.3%;
-			height: 150px;
-		}
-
-	}
-}
-
-	/* comment submit button */
-	#submit {}
-
-	/* comment form title */
-	#comment-form-title {
-		margin: 0 0 1.1em;
-	}
-
-	/* cancel comment reply link */
-	#cancel-comment-reply {
-		a {}
-	}
-
-	/* logged in comments */
-	.comments-logged-in-as {}
-
-	/* allowed tags */
-	#allowed_tags {
-		margin: 1.5em 10px 0.7335em 0;
-	}
-
-	/* no comments */
-	.nocomments {
-		margin: 0 20px 1.1em;
-	}
-
-/*********************
-12. SIDEBARS & ASIDES
-*********************/
-
-.sidebar {}
-
-	.widgettitle {}
-
-	.widget {
-
-		ul {
-
-			li {
-
-				&:first-child {}
-
-				&:last-child {}
-
-				a {}
-
-				/* deep nesting */
-				ul {}
-
-			}
-
-		}
-
-	}
-
 /*********************
 13. FOOTER STYLES
 *********************/
 
 .footer {
 	clear: both;
-	background: @green;
+	background: url(../images/green_fabric_bg.png) repeat-x;
+	//height: 70px;
+
+	.absolute {
+		width: 75px;
+		margin: 0 auto;
+		position: relative;
+
+		img {
+			width: 75px;
+			margin: 0 auto;
+			//position: relative;
+		}
+	}
 
 	#inner-footer {
 		color: #ebebeb;
+		text-align: center;
 
 		nav {
 			ul.nav {

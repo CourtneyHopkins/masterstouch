@@ -74,23 +74,24 @@ SCRIPTS & ENQUEUEING
 function bones_scripts_and_styles() {
 	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 	if (!is_admin()) {
-		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
-		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
-		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
-		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-			wp_enqueue_script( 'comment-reply' );
-		}
-		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
-
-		// enqueue styles and scripts
-		wp_enqueue_script( 'bones-modernizr' );
-		wp_enqueue_style( 'bones-stylesheet' );
-		wp_enqueue_style( 'bones-ie-only' );
-
-		$wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
-
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'bones-js' );
+		// register/enqueue styles
+        wp_enqueue_style( 'stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+        wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
+        wp_enqueue_style( 'flexslider', get_stylesheet_directory_uri() . '/library/css/flexslider.css', array(), '', 'all' );
+        wp_enqueue_style( 'stylesheet' );
+        wp_enqueue_style( 'bones-ie-only' );
+        $wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
+        
+        // register/enqueue scripts
+        wp_register_script( 'bones-modernizr', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js', array(), false, false );
+        wp_deregister_script( 'jquery' );
+        wp_register_script( 'jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js', array(), false, true );
+        wp_register_script( 'flexslider', '//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/jquery.flexslider-min.js', array('jquery'), false, true );
+        wp_register_script( 'theme-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+        wp_enqueue_script( 'bones-modernizr' );
+        wp_enqueue_script( 'jquery' );
+        wp_enqueue_script( 'theme-js' );
+        wp_enqueue_script( 'flexslider' );
 	}
 }
 
@@ -301,5 +302,191 @@ function bones_get_the_author_posts_link() {
 	);
 	return $link;
 }
+
+function masterstouch_get_image_src( $id, $size ) {
+        $src = '';
+        if ( $id > 0 ) list( $src, $width, $height ) = wp_get_attachment_image_src( $id,  $size );
+        if ( ! strlen( $src ) ) {
+                list( $src, $width, $height ) = wp_get_attachment_image_src( 98,  $size );
+        }
+    return $src;
+}
+
+function masterstouch_get_homepage_slideshow() { ?>
+	<div class="homepage-slider">
+		<ul class="slides">
+			<?php foreach( get_field('homepage_slideshow') as $slide ): ?>
+				<li>
+					<img src="<?php echo masterstouch_get_image_src( $slide['image'], 'homepage-slide-img'); ?>" alt="" />
+					<div class="flex-caption">&nbsp;</div>
+				</li>
+			<?php endforeach; ?>	
+		</ul>
+	</div>
+<?php }
+
+function masterstouch_get_the_employee_slider() {
+	$args = array(
+		'post_type' => 'employee',
+		'post_status' => 'publish',
+		'order' => 'ASC',
+		'order_by' => 'menu_order',
+		'posts_per_page' => -1
+	);
+	$employees = get_posts( $args ); ?>
+	<h1>Meet the Crew</h1>
+	<div class="divisor"></div>
+	<div class="employee-slider flexslider">
+		<div class="employee-nav clearfix">
+			<ul class="control-nav">
+	            <?php foreach ( $employees as $employee ): ?>
+	            <li><a href="#"><?php _e( get_the_title( $employee->ID ) ); ?></a></li>
+	            <?php endforeach; ?>
+	        </ul><!-- end control-nav -->
+	    </div>    
+		<ul class="slides">
+			<?php foreach ( $employees as $employee ) { ?>
+				<li style="background: url(<?php _e( masterstouch_get_image_src( $employee->employee_image, 'employee-slide-img' ) ); ?>);">
+					<div class="employee-slide">
+						<div class="employee-desc">
+							<div class="height">
+								<span><?php  _e( get_the_title( $employee->ID ) ); ?></span><br />
+								<p class="job-title"><?php _e( $employee->job_title ); ?></p>
+								<p><?php _e( $employee->biography ); ?></p>
+							</div>	
+							<div class="divisor"></div>
+						</div>
+					</div>	
+				</li>
+			<?php } ?>
+		</ul>
+	</div>	
+<?php }
+
+function masterstouch_get_the_employees() {
+	$args = array(
+		'post_type' => 'employee',
+		'post_status' => 'publish',
+		'order' => 'ASC',
+		'order_by' => 'menu_order',
+		'posts_per_page' => -1
+	);
+	$employees = get_posts( $args ); ?>
+	<ul class="mobile-emp">
+		<?php foreach ( $employees as $employee ) { ?>
+			<li>
+				<span><?php  _e( get_the_title( $employee->ID ) ); ?></span><br />
+				<p class="job-title"><?php _e( $employee->job_title ); ?></p>
+				<p><?php _e( $employee->biography ); ?></p>
+			</li>
+		<?php } ?>
+	</ul>	
+<?php }
+
+function masterstouch_get_the_services() {
+	$services = get_field( 'services' );
+	foreach ( $services as $service ) {
+?>
+	<div class="row clearfix">
+		<div class="service-title">
+			<?php _e( $service['service']); ?>
+		</div>
+		<div class="service-description">
+			<p><?php _e( $service['description']); ?></p>
+		</div>
+	</div>
+<?php }
+}
+
+function masterstouch_get_before_after_rows() {
+	$rows = get_field('before_and_after_set');
+	foreach ( $rows as $row ) { ?>
+		
+		<div class="row clearfix">
+			<div class="clearfix">
+				<div class="sixcol first">
+					<h2>Before</h2>
+				</div>	
+				<div class="sixcol last">
+					<h2>After</h2>
+				</div>
+			</div>		
+			<div class="divisor"></div>
+			<div class="clearfix green">
+				<div class="sixcol first">
+					<img src="<?php _e( masterstouch_get_image_src( $row['before_image'], 'before-after-img' ) ); ?>" alt="" />
+				</div>
+				<div class="sixcol last">
+					<img src="<?php _e( masterstouch_get_image_src( $row['after_image'], 'before-after-img' ) ); ?>" alt="" />
+				</div>
+			</div>
+		</div>
+		<div class="mobile-row clearfix">
+			<div class="divisor"></div>
+			<div class="sixcol green first">
+				<h2>Before</h2><br />
+				<img src="<?php _e( masterstouch_get_image_src( $row['before_image'], 'before-after-img' ) ); ?>" alt="" />
+			</div>
+			<div class="sixcol green last">
+				<h2>After</h2><br />
+				<img src="<?php _e( masterstouch_get_image_src( $row['after_image'], 'before-after-img' ) ); ?>" alt="" />
+			</div>
+		</div>
+	<?php }
+}
+
+function masterstouch_get_the_testimonials() {
+	foreach ( get_field( 'testimonials' ) as $t ) { ?>
+		<div class="testimonial">
+			<p>"<?php echo $t['testimonial']; ?>"</p>
+			<span>- <?php echo $t['client']; ?></span>
+		</div>
+	<?php }
+}
+
+function masterstouch_get_cards() { ?>
+<div id="homepage-crew" class="homepage-featured fourcol first">
+	<?php foreach( get_field( 'left' ) as $left ): ?>
+	<a href="masterstouch/<?php echo $left['link_to_page']; ?>/">
+		<div class="label">
+			<img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/axe.png" alt="crew-icon" /><br />
+			<span><?php echo $left['title']; ?></span>
+		</div>
+		<div class="divisor"></div>
+		<div class="desc">
+			<p><?php echo $left['caption']; ?></p>
+		</div>
+	</a>
+	<?php endforeach; ?>	
+</div>
+<div id="homepage-emergency" class="homepage-featured fourcol">
+	<?php foreach( get_field( 'middle' ) as $middle ): ?>
+	<a href="masterstouch/<?php echo $middle['link_to_page']; ?>/">
+		<div class="label">
+			<img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/911.png" alt="emergency-icon" /><br />
+			<span><?php echo $middle['title']; ?></span>
+		</div>
+		<div class="divisor"></div>
+		<div class="desc">
+			<p><?php echo $middle['caption']; ?></p>
+		</div>
+	</a>
+	<?php endforeach; ?>	
+</div>
+<div id="homepage-services" class="homepage-featured fourcol last">
+	<?php foreach( get_field( 'right' ) as $right ): ?>
+	<a href="masterstouch/<?php echo $right['link_to_page']; ?>/">
+		<div class="label">
+			<img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/boot.png" alt="services-icon" /><br />
+			<span><?php echo $right['title']; ?></span>
+		</div>
+		<div class="divisor"></div>
+		<div class="desc">
+			<p><?php echo $right['caption']; ?></p>
+		</div>
+	</a>
+	<?php endforeach; ?>
+</div>
+<?php }
 
 ?>

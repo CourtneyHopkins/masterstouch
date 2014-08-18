@@ -4,14 +4,23 @@
 				<div id="inner-content" class="wrap clearfix">
 					<div id="main" class="twelvecol first clearfix" role="main">
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-						<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-							<header class="article-header">
+							<div class="page-header-wrapper">
 								<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
-							</header>
-							<section class="entry-content clearfix" itemprop="articleBody">
-								<?php the_content(); ?>
-							</section>
-						</article>
+							</div>
+							<div class="gallery-slideshow">
+								<ul class="slides">
+									<?php foreach( get_field( 'slideshow' ) as $slide ): ?>
+										<li>
+											<div class="clearfix">
+												<?php foreach( $slide['images'] as $image ): ?>
+												<img class="<?php if ( count( $slide['images'] ) == 2 ): echo 'two-images'; endif; ?>" src="<?php echo masterstouch_get_image_src( $image['image'], 'before-after-img' ); ?>" />
+												<?php endforeach; ?>
+											</div>	
+										<p><?php echo $slide['caption']; ?></p>
+										</li>
+									<?php endforeach; ?>	
+								</ul>
+							</div>
 						<?php endwhile; else : ?>
 							<article id="post-not-found" class="hentry clearfix">
 								<header class="article-header">

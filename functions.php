@@ -4,8 +4,9 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 require_once( 'library/custom-post-type.php' ); // you can disable this if you like
 
 // Thumbnail sizes
-add_image_size( 'employee-featured-img', 150, 150, true );
-add_image_size( 'employee-slide-img', 1200, 500, true );
+add_image_size( 'employee-slide-img', 894, 400, true );
+add_image_size( 'before-after-img', 700, 400, true );
+add_image_size( 'homepage-slide-img', 1200, 250, true );
 
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {

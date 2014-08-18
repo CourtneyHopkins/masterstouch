@@ -27,20 +27,41 @@
 	<body>
 		<div id="container">
 			<header class="header clearfix" role="banner">
-				<p id="site-title"><?php bloginfo('name'); ?></p>
+				<div class="preface clearfix">
+					<h1 style="display:none !important"><?php get_bloginfo( 'name' ); ?></h1>
+					<div id="site-title"><a href="<?php echo home_url(); ?>">The Master's Touch <span>Tree Service</span></a></div>
+					<div id="header-phone">
+						Call for a Free Estimate!<br />
+						<span><?php echo get_field( 'phone', 'option' ); ?></span>
+					</div>
+				</div>	
 				<div id="inner-header" class="clearfix">
 					<div class="nav-container">
-						<div class="nav left">
-							<a href="masterstouch.com/about/">About</a>
-							<a href="masterstouch.com/services/">Services</a>
+						<div class="nav left first-nav-group">
+							<a href="masterstouch/about/">About</a>
+							<a href="masterstouch/services/">Services</a>
 						</div>
-						<div class="left">
-							<a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/mt_logo.png" id="logo" alt="Master's Touch Tree Service Logo" /></a>	
+						<div class="absolute">
+							<a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/mt_logo.png" id="logo" alt="Master's Touch Tree Service Logo" /></a>
 						</div>
-						<div class="nav left">
-							<a href="masterstouch.com/gallery/">Gallery</a>
-							<a href="masterstouch.com/contact/">Contact</a>
-						</div>	
+						<div class="nav left second-nav-group">
+							<a href="masterstouch/gallery/">Gallery</a>
+							<a href="masterstouch/contact/">Contact</a>
+						</div>
 					</div>
+					<div class="mobile-phone">
+						<span><a href="tel:<?php echo get_field( 'phone', 'option' ); ?>"><?php echo get_field( 'phone', 'option' ); ?></a></span>
+					</div>
+					<div class="mobile-nav-button">
+						Menu
+					</div>					
 				</div>
 			</header>
+			<div class="mobile-nav-container" style="display: none;">
+				<div class="nav">
+					<a href="masterstouch/about/">About</a>
+					<a href="masterstouch/services/">Services</a>
+					<a href="masterstouch/gallery/">Gallery</a>
+					<a href="masterstouch/contact/">Contact</a>
+				</div>
+			</div>

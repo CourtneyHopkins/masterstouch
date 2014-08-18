@@ -102,8 +102,6 @@ really slow down your CSS. Don't overdo it.
 /*********************
 BOX SHADOW
 *********************/
-/* .boxShadow(0,0,4px,0,#444); */
-/* .boxShadow(none); */
 /*********************
 BUTTONS
 *********************/
@@ -126,21 +124,21 @@ upon your base.less styles.
 /*********************
 NAVIGATION STYLES
 *********************/
-/* .menu is clearfixed inside mixins.scss */
-.menu {
-  /* end .menu ul */
+#homepage-slideshow {
+  background: #ebebeb;
+  height: auto;
+  display: block !important;
 }
-.menu ul {
-  /* end .menu ul li */
-  /* highlight current page */
-  /* end current highlighters */
+#homepage-slideshow img {
+  max-width: 1200px;
+  width: 100%;
 }
-.menu ul li {
-  /*
-				plan your menus and drop-downs wisely.
-				*/
+#homepage-slideshow .flex-caption {
+  margin-top: -10%;
 }
-/* end .menu */
+#tagline {
+  margin-top: 3%;
+}
 /*********************
 POSTS & CONTENT STYLES
 *********************/
@@ -175,6 +173,9 @@ FOOTER STYLES
 check your menus here. do they look good?
 do they need tweaking?
 */
+.footer {
+  text-align: left;
+}
 /* end .footer-links */
 /* import grid */
 /******************************************************************
@@ -274,6 +275,21 @@ Stylesheet: Tablet & Small Desktop Stylesheet
 /*********************
 GENERAL STYLES
 *********************/
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+  margin-top: 40px;
+}
+p {
+  line-height: 23px;
+}
 /*********************
 LAYOUT & GRID STYLES
 *********************/
@@ -285,19 +301,44 @@ HEADER STYLES
 *********************/
 .header {
   padding-top: 0;
+  height: 178px;
 }
 .header #site-title {
   font-size: 2.3rem;
-  margin: 15px 0;
+  margin: 8px 0 !important;
+  width: 350px;
+  line-height: 30px;
+  float: left;
+  text-align: left;
+}
+.header #site-title span {
+  font-size: 1.3rem;
+}
+.header #header-phone {
+  display: block !important;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
+  color: #202020;
+  text-align: right;
+  font-size: 1.3rem;
+  width: 350px;
+  padding: 20px 0;
+  line-height: 30px;
+  float: right;
+}
+.header #header-phone span {
+  font-family: "Strait", Helvetica, Arial, sans-serif !important;
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 .header #inner-header {
   width: 100%;
   /* end .nav */
 }
 .header #inner-header .nav-container {
-  width: 575px;
+  width: 640px;
   margin: 0 auto;
   position: relative;
+  display: block !important;
 }
 .header #inner-header .nav {
   margin: 0;
@@ -315,25 +356,78 @@ HEADER STYLES
   color: #b8b8b8;
   text-decoration: none !important;
 }
-.header #logo {
-  width: 115px !important;
-  margin: -18px auto 0 auto !important;
+.header #inner-header .absolute {
+  float: left;
+}
+.header #inner-header .absolute #logo {
+  width: 171px !important;
+  margin: -45px auto 0 auto !important;
+  position: absolute;
+}
+.header #inner-header .first-nav-group {
+  margin: 0 8px 0 0;
+}
+.header #inner-header .second-nav-group {
+  padding-top: 15px;
+  float: left;
+  margin-left: 178px;
+}
+.header #inner-header .second-nav-group a {
+  border-bottom: 0;
+  background: none !important;
+  color: #ebebeb;
+  float: left !important;
+  padding: 10px 20px;
+}
+.header #inner-header .second-nav-group a:hover,
+.header #inner-header .second-nav-group a:focus {
+  color: #b8b8b8;
+  text-decoration: none !important;
+}
+.header #inner-header .mobile-nav-button,
+.header #inner-header .mobile-phone {
+  display: none;
+}
+.mobile-nav-container {
+  display: none;
 }
 /*********************
 CONTENT & POSTS
 *********************/
+#content #inner-content {
+  padding: 0 50px;
+}
+#content #inner-content .page-header-wrapper {
+  text-align: center;
+  margin: 70px 0 20px 0;
+}
+#content #inner-content .page-header-wrapper p {
+  clear: left;
+  margin-top: 0;
+  font-size: 1.5rem;
+  line-height: 35px;
+  padding: 0 5%;
+  color: #828754;
+}
+#content #inner-content .page-header-wrapper .phone {
+  font-size: 2.4rem;
+}
 #homepage-slideshow {
   width: 100%;
-  height: 250px;
+  max-height: 250px;
+}
+#homepage-slideshow .flex-caption {
+  margin-top: -140px;
 }
 #tagline {
-  font-size: 1.7rem;
   text-align: center;
   color: #202020;
   line-height: 30px;
+  margin-top: 108px;
 }
 #tagline p {
-  padding: 20px 20%;
+  padding: 20px 15%;
+  font-size: 1.7rem !important;
 }
 #homepage-content {
   padding: 40px;
@@ -349,39 +443,169 @@ CONTENT & POSTS
 .featured-area #homepage-services {
   margin-bottom: 0;
 }
-/*********************
-SIDEBARS & ASIDES
-*********************/
-.sidebar {
-  margin-top: 2.2em;
+.services .page-header-wrapper p {
+  padding: 0 10% !important;
+  font-size: 1.7rem !important;
+  line-height: 35px !important;
 }
-.widgettitle {
-  border-bottom: 2px solid #444;
-  margin-bottom: 0.75em;
+.services #inner-services .row {
+  padding: 0;
 }
-.widget {
-  padding: 0 10px;
-  margin: 2.2em 0;
+.testimonial-group {
+  display: block !important;
+  padding-right: 15px;
 }
-.widget ul li {
-  margin-bottom: 0.75em;
-  /* deep nesting */
+.testimonial-group .testimonial {
+  border-left: 3px solid #dcdeca;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background: #e2e4d3;
 }
-.widget ul li ul {
-  margin-top: 0.75em;
-  padding-left: 1em;
+.testimonial-group .testimonial p {
+  font-size: 14px !important;
+  line-height: 18px;
 }
-/* links widget */
-/* meta widget */
-/* pages widget */
-/* recent-posts widget */
-/* archives widget */
-/* tag-cloud widget */
-/* calendar widget */
-/* category widget */
-/* recent-comments widget */
-/* search widget */
-/* text widget */
+.testimonial-group .testimonial span {
+  font-family: "Kelly Slab", Cambria, Times New Roman, Times, serif;
+  font-size: 18px;
+  color: #828754;
+}
+.employee-slider {
+  display: block !important;
+  width: 100%;
+  height: auto;
+}
+.employee-slider .slides {
+  height: auto;
+}
+.employee-slider li {
+  height: auto;
+  width: 100%;
+}
+.employee-slider li .employee-image img {
+  width: 100%;
+  height: auto;
+}
+.employee-slider li .employee-desc {
+  max-width: 400px;
+  width: 100%;
+  float: right;
+  margin: 0 2% 0 0;
+  height: 400px;
+  background: #43452b;
+  color: #d2d4ba;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
+  padding: 20px 20px 0 20px;
+}
+.employee-slider li .employee-desc .height {
+  height: 350px;
+  overflow: scroll !important;
+}
+.employee-slider li span {
+  font-size: 1.7rem;
+  font-family: "Kelly Slab", serif;
+  margin-bottom: 0;
+}
+.employee-slider li .job-title {
+  margin-top: 0;
+  font-style: italic;
+}
+.employee-slider li span,
+.employee-slider li .job-title {
+  color: #92975e;
+}
+.employee-slider .employee-nav {
+  background: #1e2014;
+  padding: 20px;
+}
+.employee-slider .employee-nav .control-nav {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  width: 500px;
+}
+.employee-slider .employee-nav .control-nav li a {
+  color: #ebebeb;
+  font-family: "Strait", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  float: left !important;
+  position: relative;
+  padding: 0 3% 0;
+}
+.employee-slider .employee-nav .control-nav li a:hover {
+  color: #92975e;
+  text-decoration: none;
+}
+.mobile-emp {
+  display: none !important;
+}
+.gallery-thumb {
+  float: left;
+  margin: 0 1.4%;
+  width: 22%;
+  background-position: top !important;
+}
+.gallery-thumb:last-child {
+  margin-right: none;
+}
+.gallery-slideshow img {
+  margin: 0;
+}
+.gallery-slideshow .two-images {
+  width: 50%;
+}
+.gallery-slideshow .two-images:first-child {
+  border-right: 2px solid #1e2014;
+}
+.gallery-slideshow p {
+  font-size: 20px;
+  font-weight: 400;
+}
+#inner-gallery {
+  color: #555837;
+}
+#inner-gallery .page-header-wrapper {
+  text-align: center;
+  margin: 70px 0 20px 0;
+}
+#inner-gallery .page-header-wrapper p {
+  clear: left;
+  margin-top: 0;
+  font-size: 1.5rem;
+  line-height: 35px !important;
+  padding: 0 5%;
+  color: #828754;
+}
+#inner-gallery .row {
+  display: block !important;
+}
+#inner-gallery .mobile-row {
+  display: none !important;
+}
+.contact-form {
+  width: 70%;
+}
+.contact-form input[type='text'],
+.contact-form input[type='email'],
+.contact-form input[type='tel'] {
+  background: none;
+  box-shadow: none;
+  height: 30px;
+  border-bottom: 2px solid #92975e;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+}
+.contact-form .left {
+  float: left;
+  width: 47%;
+}
+.contact-form .right {
+  float: right;
+  width: 47%;
+}
 /*********************
 FOOTER STYLES
 *********************/
