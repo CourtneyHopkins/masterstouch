@@ -6,21 +6,26 @@ Template Name: About Template
 
 <?php get_header(); ?>
 
-			<div id="content">
-				<div id="inner-content" class="wrap clearfix">
-					<div id="main" class="twelvecol first clearfix" role="main">
-						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-							<h1><?php the_title(); ?></h1>
-							<div class="divisor"></div>
-							<?php the_content(); ?>
-							<?php _e( masterstouch_get_the_employee_slider() ); ?>
-							<?php _e( masterstouch_get_the_employees() ); ?>
-						<?php endwhile; else : ?>
-							<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-							<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-						<?php endif; ?>
-					</div>
+	<div id="content" class="inner-gallery">
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<div class="wrap clearfix interior-page-width">
+			<div class="twelvecol first clearfix" role="main">
+				<div class="page-header-wrapper">
+					<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+					<?php the_content(); ?>	
+				</div>	
+			</div>
+		</div>
+		<div class="redwood-divisor-large"></div>
+		<div class="second-half">
+			<div class="wrap clearfix interior-page-width">
+				<div class="twelvecol first clearfix employee-container" role="main">
+					<?php echo masterstouch_get_the_employees(); ?>
 				</div>
 			</div>
+		</div>	
+		<?php endwhile; ?>
+		<?php endif; ?>
+	</div>	
 
 <?php get_footer(); ?>

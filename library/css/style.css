@@ -559,9 +559,6 @@ really slow down your CSS. Don't overdo it.
 /*********************
 BOX SHADOW
 *********************/
-/*********************
-BUTTONS
-*********************/
 /*
 BASE (MOBILE) SIZE
 This are the mobile styles. It's what people see on their phones. If
@@ -577,15 +574,21 @@ Stylesheet: Base Mobile Stylesheet
 html,
 body {
   /* height: 100%; */
-  background: #1e2014;
+  background: url(../images/tree-bg.png) no-repeat #dcdeca;
+  background-position: top;
+  background-size: contain;
 }
 body {
   font-family: "Kelly Slab", Cambria, Times New Roman, Times, serif;
-  line-height: 1.5;
+  line-height: 1.3;
   color: #565656;
 }
 p {
   font-size: 1.1rem;
+  line-height: 22px !important;
+}
+.center {
+  text-align: center;
 }
 /*********************
 03. LAYOUT & GRID STYLES
@@ -598,8 +601,11 @@ p {
   -moz-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.6);
 }
-#container {
-  background: #1e2014;
+.interior-page-width {
+  max-width: 1080px;
+}
+.second-half {
+  background-color: #1e2014;
 }
 .right {
   float: right;
@@ -610,6 +616,14 @@ p {
 .divisor {
   background: url(../images/wood.jpg) repeat-x center left;
   height: 10px !important;
+}
+.redwood-divisor-small {
+  background: url(../images/red-wood.jpg) repeat-x center left;
+  height: 10px !important;
+}
+.redwood-divisor-large {
+  background: url(../images/red-wood.jpg) repeat-x center left;
+  height: 50px !important;
 }
 /*********************
 04. LINK STYLES
@@ -627,7 +641,14 @@ a:visited:focus,
 a:active,
 a:visited:active {
   color: #b8b8b8;
-  text-decoration: underline;
+  -webkit-transition-duration: 200ms;
+  -webkit-transition-timing-function: ease-out;
+  /* Webkit for Mozila Firefox */
+  -moz-transition-duration: 200ms;
+  -moz-transition-timing-function: ease-out;
+  /* Webkit for IE( Version: 11, 10 ) */
+  -ms-transition-duration: 200ms;
+  -ms-transition-timing-function: ease-out;
 }
 p {
   font-family: "Strait", Helvetica, Arial, sans-serif;
@@ -670,8 +691,8 @@ h5 a,
 }
 h1,
 .h1 {
-  font-size: 2.5em;
-  line-height: 1.333em;
+  font-size: 1.8em;
+  line-height: 1em;
 }
 h2,
 .h2 {
@@ -695,13 +716,32 @@ h5,
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+.page-separator {
+  background: url(../images/tree-bg.png) no-repeat #dcdeca;
+  background-position: top;
+  background-size: cover;
+  padding: 30px;
+  text-align: center;
+  -moz-box-shadow: inset 0 1px 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 1px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1px 15px rgba(0, 0, 0, 0.5);
+}
+.page-separator h1 {
+  margin: 0;
+}
+.lose-that-space .interior-page-width {
+  padding: 0 !important;
+}
 /*********************
 06. HEADER STYLES
 *********************/
 .header {
   color: #ebebeb;
-  background: url(../images/wood-long-color.jpg) repeat-x #1e2014;
-  height: 149px;
+  background: url(../images/metal-bg.jpg) repeat-x #1e2014;
+  background-position: center;
+  background-size: cover;
+  height: 147px;
+  border-bottom: 10px solid #1e2014;
 }
 .header .preface {
   width: 96%;
@@ -710,7 +750,7 @@ h5,
   position: relative;
 }
 .header #site-title {
-  color: #202020;
+  color: #ebebeb;
   text-align: center;
   font-weight: 700;
   font-size: 1.5rem;
@@ -722,12 +762,12 @@ h5,
 }
 .header #site-title a {
   font-family: "Mate SC", serif !important;
-  color: #202020;
+  color: #ebebeb;
 }
 .header #site-title a:hover,
 .header #site-title a:active,
 .header #site-title a:focus {
-  color: #202020;
+  color: #ebebeb;
   text-decoration: none;
 }
 .header #site-title a span {
@@ -769,14 +809,14 @@ h5,
   background: #1e2014;
   text-align: center;
   cursor: pointer;
-  margin: 20px 20px 0 0;
+  margin: 22px 20px 0 0;
   float: right;
   font-weight: 700;
 }
 .header #inner-header .mobile-phone {
   float: left;
   font-size: 1.2rem;
-  padding: 23px 0 0 10px;
+  padding: 25px 0 0 10px;
 }
 .header #inner-header .background-green {
   background: #92975e;
@@ -787,13 +827,20 @@ h5,
   margin: 0 auto;
   z-index: 9999;
 }
+.mobile-nav-container {
+  background: #555837;
+}
+.mobile-nav-container ul {
+  margin: 0;
+}
 .mobile-nav-container .nav a {
   display: block;
   float: none;
   padding: 20px 10%;
-  border-bottom: 1px solid #555837;
+  border-bottom: 1px solid #373923;
   font-size: 1.3rem;
   text-transform: uppercase;
+  text-align: center;
 }
 /*********************
 HOMEPAGE
@@ -805,7 +852,6 @@ HOMEPAGE
   background: url(../images/wood.jpg) no-repeat;
   height: 100px;
   font-family: "Strait", Helvetica, Arial, sans-serif;
-  font-style: italic;
   font-size: 1.2rem;
   text-align: center;
   line-height: 25px;
@@ -814,20 +860,25 @@ HOMEPAGE
   -webkit-box-shadow: 0px 2px 31px 5px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 2px 31px 5px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 2px 31px 5px rgba(0, 0, 0, 0.6);
+  display: table;
+  position: relative;
 }
 #tagline p {
-  padding: 5% 5px;
+  padding: 0 5px;
   margin: 0;
+  display: table-cell;
+  vertical-align: middle;
 }
 #homepage-content {
-  background: #d2d4ba;
+  background: url(../images/20.jpg) repeat #d2d4ba;
+  background-position: top;
+  background-size: 450px;
   padding: 20px;
   -webkit-box-shadow: inset 0 0 18px #202020;
   -moz-box-shadow: inset 0 0 18px #202020;
   box-shadow: inset 0 0 18px #202020;
 }
 .featured-area .homepage-featured {
-  border-radius: 8px;
   background: #333333;
 }
 .featured-area .homepage-featured:hover {
@@ -850,10 +901,9 @@ HOMEPAGE
 .featured-area #homepage-crew,
 .featured-area #homepage-emergency,
 .featured-area #homepage-services {
-  border-radius: 8px;
   background: #73774b;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
@@ -862,7 +912,6 @@ HOMEPAGE
 .featured-area #homepage-emergency .label,
 .featured-area #homepage-services .label {
   background: #ffffff;
-  border-radius: 8px 8px 0 0;
   padding: 20px 0;
 }
 .featured-area #homepage-crew .label img,
@@ -902,61 +951,38 @@ HOMEPAGE
 /*********************
 08. POSTS & CONTENT STYLES
 *********************/
-#content {
-  background: #1e2014;
-}
-#content #inner-content {
-  background: #ebebeb;
-  max-width: 1080px;
+.page-header-wrapper {
+  text-align: center;
+  margin: 20px 0;
   padding: 0 20px;
 }
-#content #inner-content .page-header-wrapper {
-  text-align: center;
-  margin: 20px 0 20px 0;
-}
-#content #inner-content .page-header-wrapper p {
+.page-header-wrapper p {
   clear: left;
-  margin-top: 0;
-  font-size: 1.3rem;
+  margin-top: 10px;
+  font-size: 1.1rem;
   line-height: 20px;
   padding: 0;
-  color: #828754;
+  color: #646841;
 }
-#content #inner-content .page-header-wrapper .phone {
+.page-header-wrapper .phone {
   font-size: 1.8rem;
-  color: #1e2014;
+  color: #1e2014 !important;
   margin-bottom: 20px;
 }
-.services #inner-services {
-  background: #ebebeb;
-  max-width: 1080px;
-  margin: 0 auto;
-  position: relative;
-  padding: 30px 25px;
+.extra-space {
+  padding: 0 20px;
 }
-.services #inner-services .page-header-wrapper {
-  text-align: center;
-  margin-bottom: 50px;
-}
-.services #inner-services .page-header-wrapper p {
-  clear: left;
-  margin-top: 0;
-  font-size: 1.3rem;
-  line-height: 20px;
-  padding: 0;
-  color: #828754;
-}
-.services #inner-services .row {
+.services .row {
   margin-bottom: 30px;
 }
-.services #inner-services .service-title {
+.services .service-title {
   text-align: left;
   color: #1e2014;
   border-bottom: 3px solid #d2d4ba;
   font-size: 1.3rem;
   width: 100%;
 }
-.services #inner-services .service-description {
+.services .service-description {
   font-family: "Strait", Helvetica, Arial, sans-serif;
   border-radius: 3px;
   margin-top: 10px;
@@ -964,63 +990,114 @@ HOMEPAGE
 .testimonial-group {
   display: none;
 }
-.employee-slider {
-  display: none;
+.testimonial {
+  padding: 10px 20px;
+  background: #6a6e45;
 }
-.mobile-emp {
-  margin-top: 0;
+.testimonial p {
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: #ffffff;
+}
+.gray {
+  background: #ebebeb;
+}
+.client {
+  padding: 10px 20px;
+  background: url('../images/red-wood.jpg');
+}
+.client span {
+  font-family: "Kelly Slab", Cambria, Times New Roman, Times, serif;
+  font-size: 18px;
   color: #ebebeb;
+  float: right;
 }
-.mobile-emp li {
-  border-bottom: 5px solid #9a9f65;
-  padding: 20px;
+.large-testimonial-area .item {
+  -webkit-box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.04) !important;
+  -moz-box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.04) !important;
 }
-.mobile-emp li:nth-child(odd) {
-  background: #73774b;
+.large-testimonial-area .testimonial {
+  background: #ffffff;
 }
-.mobile-emp li:nth-child(even) {
-  background: #898d58;
+.large-testimonial-area .testimonial p {
+  color: #000000 !important;
 }
-.mobile-emp li span {
-  font-size: 1.7rem;
-  font-family: "Kelly Slab", serif;
-  margin-bottom: 0;
+.large-testimonial-area .client {
+  background: #d2d4ba;
 }
-.mobile-emp li .job-title {
-  margin-top: 0;
+.large-testimonial-area .client span {
+  color: #000000 !important;
+}
+.employee-container {
+  background: #ebebeb;
+  padding: 20px 5% 0 5%;
+}
+.employee {
+  clear: both;
+  margin-top: 50px;
+}
+.employee .emp-title {
+  text-align: center;
+  margin-top: 20px;
+}
+.employee span {
+  font-size: 30px;
+  color: #555837;
+}
+.employee .job-title {
+  font-size: 14px !important;
   font-style: italic;
 }
-#inner-gallery {
-  padding: 0 2%;
-  background: #ebebeb;
-  max-width: 1080px;
+.employee .employee-image {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  height: auto;
+  padding: 8px 8px 2px 8px;
+  background: url(../images/red-wood.jpg);
+  margin: 0 auto;
 }
-#inner-gallery .page-header-wrapper {
+.employee .employee-image img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.6);
+}
+.swipe-notice {
+  color: #ffffff;
+  padding-bottom: 0;
   text-align: center;
-  margin: 20px 0 20px 0;
 }
-#inner-gallery .page-header-wrapper p {
-  clear: left;
-  margin-top: 0;
-  font-size: 1.3rem;
-  padding: 0;
-  color: #828754;
+.galleries {
+  margin-top: 40px;
 }
-#inner-gallery .green {
+.inner-gallery {
+  display: block;
+}
+.inner-gallery .green {
   background: #212316;
   padding: 15px 15px 10px;
 }
-#inner-gallery .row {
+.inner-gallery .row {
   display: none;
   margin-bottom: 15px;
 }
-#inner-gallery h2 {
+.inner-gallery h2 {
   margin-top: 10px;
   font-family: "Strait", Helvetica, Arial, sans-serif !important;
   margin-bottom: 0;
 }
-#inner-gallery img {
-  max-width: 700px;
+.inner-gallery img {
+  max-width: 737px;
   width: 100%;
   height: auto;
 }
@@ -1045,14 +1122,6 @@ HOMEPAGE
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.6);
 }
-.gallery-thumb-wrapper .gallery-thumb img {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  filter: grayscale(100%);
-}
 .gallery-thumb-wrapper .gallery-thumb p {
   color: #ebebeb;
   text-decoration: none;
@@ -1060,42 +1129,37 @@ HOMEPAGE
   padding: 10px 15px;
   margin: 0;
 }
-.gallery-thumb-wrapper:hover {
-  text-decoration: none;
-  -webkit-transition: all 4s ease-in-out;
-  -moz-transition: all 4s ease-in-out;
-  -ms-transition: all 4s ease-in-out;
-  -o-transition: all 4s ease-in-out;
-  transition: all 4s ease-in-out;
-}
-.gallery-thumb-wrapper:hover .gallery-thumb {
-  border-top: 8px solid #3d3f27;
-}
-.gallery-thumb-wrapper:hover .gallery-thumb img {
-  -webkit-filter: grayscale(0);
-  -moz-filter: grayscale(0);
-  filter: grayscale(0);
-}
-.gallery-thumb-wrapper:hover .gallery-thumb p {
-  color: #d2d4ba;
-}
 .gallery-slideshow {
-  margin: 40px 0 40px 0;
+  margin: 20px 0 40px 0;
 }
-.gallery-slideshow img {
+.gallery-slideshow .slides li {
+  background: #555837;
+}
+.gallery-slideshow .one-image {
   width: 100%;
   height: auto;
-  float: left;
+  margin: 0 auto;
+  display: block;
   border-bottom: 2px solid #1e2014;
-  background: #555837;
   -webkit-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
 }
+.gallery-slideshow .two-images {
+  width: 50%;
+  float: left;
+}
+.gallery-slideshow .two-images img {
+  float: left;
+  height: auto !important;
+}
+.gallery-slideshow .two-images:first-child {
+  border-right: 5px solid #1e2014;
+}
 .gallery-slideshow p {
   text-align: left;
   font-size: 16px;
-  line-height: 25px;
+  line-height: 20px !important;
   color: #ebebeb;
   background: #555837;
   margin: 0;
@@ -1105,12 +1169,18 @@ HOMEPAGE
   -moz-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
 }
+.gallery-slideshow .flex-direction-nav {
+  display: none;
+}
 .contact-form {
   text-align: left;
-  width: 96%;
+  width: 100%;
   margin: 0 auto;
   position: relative;
-  padding-top: 20px;
+}
+.contact-form form {
+  background: #ebebeb;
+  padding: 25px;
 }
 .contact-form p {
   color: #92975e !important;
@@ -1151,6 +1221,9 @@ HOMEPAGE
   font-size: 1rem;
   padding: 10px;
   border-radius: 3px;
+}
+.contact-form div.wpcf7 img.ajax-loader {
+  display: none;
 }
 /******************************************************************
 09. PAGE NAVI STYLES
@@ -1220,10 +1293,9 @@ HOMEPAGE
 *********************/
 .footer {
   clear: both;
-  background: url(../images/green_fabric_bg.png) repeat-x;
+  background: url(../images/green_fabric_bg.png) repeat-x #1e2014;
 }
 .footer .absolute {
-  width: 75px;
   margin: 0 auto;
   position: relative;
 }
@@ -1245,6 +1317,9 @@ HOMEPAGE
 	view.
 	*/
 /* end .footer-links */
+.copyright {
+  font-size: 0.9rem;
+}
 /*
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's
@@ -1283,9 +1358,6 @@ NAVIGATION STYLES
   #homepage-slideshow .flex-caption {
     margin-top: -10%;
   }
-  #tagline {
-    margin-top: 3%;
-  }
   /*********************
 POSTS & CONTENT STYLES
 *********************/
@@ -1323,7 +1395,6 @@ do they need tweaking?
   .footer {
     text-align: left;
   }
-  /* end .footer-links */
 }
 /*
 TABLET & SMALLER LAPTOPS
@@ -1441,6 +1512,10 @@ GENERAL STYLES
   .h5 {
     margin-top: 40px;
   }
+  h1 {
+    font-size: 2.8em;
+    line-height: 1.333em;
+  }
   p {
     line-height: 23px;
   }
@@ -1450,12 +1525,15 @@ LAYOUT & GRID STYLES
   .wrap {
     max-width: 1200px;
   }
+  .interior-page-width {
+    padding: 0 30px;
+  }
   /*********************
 HEADER STYLES
 *********************/
   .header {
     padding-top: 0;
-    height: 178px;
+    height: 179px;
   }
   .header #site-title {
     font-size: 2.3rem;
@@ -1471,7 +1549,7 @@ HEADER STYLES
   .header #header-phone {
     display: block !important;
     font-family: "Strait", Helvetica, Arial, sans-serif;
-    color: #202020;
+    color: #ebebeb;
     text-align: right;
     font-size: 1.3rem;
     width: 350px;
@@ -1489,10 +1567,11 @@ HEADER STYLES
     /* end .nav */
   }
   .header #inner-header .nav-container {
-    width: 640px;
+    width: 690px;
     margin: 0 auto;
     position: relative;
     display: block !important;
+    padding-left: 28px;
   }
   .header #inner-header .nav {
     margin: 0;
@@ -1518,13 +1597,21 @@ HEADER STYLES
     margin: -45px auto 0 auto !important;
     position: absolute;
   }
+  .header #inner-header ul {
+    margin: 0 !important;
+    float: left;
+  }
+  .header #inner-header ul li {
+    float: left;
+  }
   .header #inner-header .first-nav-group {
     margin: 0 8px 0 0;
   }
   .header #inner-header .second-nav-group {
     padding-top: 15px;
     float: left;
-    margin-left: 178px;
+    margin-left: 407px;
+    margin-top: -59px;
   }
   .header #inner-header .second-nav-group a {
     border-bottom: 0;
@@ -1551,20 +1638,15 @@ CONTENT & POSTS
   #content #inner-content {
     padding: 0 50px;
   }
-  #content #inner-content .page-header-wrapper {
+  .page-header-wrapper {
     text-align: center;
-    margin: 70px 0 20px 0;
+    margin: 70px 0 35px 0 !important;
   }
-  #content #inner-content .page-header-wrapper p {
-    clear: left;
-    margin-top: 0;
+  .page-header-wrapper p {
+    margin-top: 15px;
     font-size: 1.5rem;
-    line-height: 35px;
-    padding: 0 5%;
-    color: #828754;
-  }
-  #content #inner-content .page-header-wrapper .phone {
-    font-size: 2.4rem;
+    line-height: 30px !important;
+    padding: 0 10%;
   }
   #homepage-slideshow {
     width: 100%;
@@ -1573,15 +1655,8 @@ CONTENT & POSTS
   #homepage-slideshow .flex-caption {
     margin-top: -140px;
   }
-  #tagline {
-    text-align: center;
-    color: #202020;
-    line-height: 30px;
-    margin-top: 108px;
-  }
   #tagline p {
-    padding: 20px 15%;
-    font-size: 1.7rem !important;
+    padding: 0 15%;
   }
   #homepage-content {
     padding: 40px;
@@ -1597,144 +1672,114 @@ CONTENT & POSTS
   .featured-area #homepage-services {
     margin-bottom: 0;
   }
-  .services .page-header-wrapper p {
-    padding: 0 10% !important;
-    font-size: 1.7rem !important;
-    line-height: 35px !important;
+  .extra-space {
+    padding: 0;
+  }
+  .galleries {
+    margin-top: 0;
   }
   .services #inner-services .row {
     padding: 0;
+  }
+  .large-testimonial-area {
+    padding-top: 40px !important;
   }
   .testimonial-group {
     display: block !important;
     padding-right: 15px;
   }
-  .testimonial-group .testimonial {
-    border-left: 3px solid #dcdeca;
-    margin-bottom: 15px;
-    padding: 10px 20px;
-    background: #e2e4d3;
-  }
-  .testimonial-group .testimonial p {
-    font-size: 14px !important;
-    line-height: 18px;
-  }
-  .testimonial-group .testimonial span {
-    font-family: "Kelly Slab", Cambria, Times New Roman, Times, serif;
-    font-size: 18px;
-    color: #828754;
-  }
-  .employee-slider {
-    display: block !important;
-    width: 100%;
-    height: auto;
-  }
-  .employee-slider .slides {
-    height: auto;
-  }
-  .employee-slider li {
-    height: auto;
-    width: 100%;
-  }
-  .employee-slider li .employee-image img {
-    width: 100%;
-    height: auto;
-  }
-  .employee-slider li .employee-desc {
-    max-width: 400px;
-    width: 100%;
-    float: right;
-    margin: 0 2% 0 0;
-    height: 400px;
-    background: #43452b;
-    color: #d2d4ba;
-    font-family: "Strait", Helvetica, Arial, sans-serif;
-    padding: 20px 20px 0 20px;
-  }
-  .employee-slider li .employee-desc .height {
-    height: 350px;
-    overflow: scroll !important;
-  }
-  .employee-slider li span {
-    font-size: 1.7rem;
-    font-family: "Kelly Slab", serif;
-    margin-bottom: 0;
-  }
-  .employee-slider li .job-title {
-    margin-top: 0;
-    font-style: italic;
-  }
-  .employee-slider li span,
-  .employee-slider li .job-title {
-    color: #92975e;
-  }
-  .employee-slider .employee-nav {
-    background: #1e2014;
-    padding: 20px;
-  }
-  .employee-slider .employee-nav .control-nav {
-    position: relative;
-    margin: 0 auto;
-    padding: 0;
+  .read-more-tests {
+    margin: 30px 10%;
+    padding: 15px 10px;
+    text-align: center;
+    background: #46482d;
     display: block;
-    width: 500px;
+    -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.6);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #d2d4ba !important;
   }
-  .employee-slider .employee-nav .control-nav li a {
-    color: #ebebeb;
-    font-family: "Strait", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    float: left !important;
-    position: relative;
-    padding: 0 3% 0;
+  .read-more-tests:hover {
+    background: #555837;
   }
-  .employee-slider .employee-nav .control-nav li a:hover {
-    color: #92975e;
-    text-decoration: none;
+  .employee-container {
+    margin-top: 40px;
   }
-  .mobile-emp {
-    display: none !important;
+  .employee .emp-title {
+    text-align: left;
   }
-  .gallery-thumb {
+  .employee .employee-image {
     float: left;
+    margin-right: 50px;
+  }
+  .employee:last-child .employee-image {
+    margin-bottom: 50px;
+  }
+  .galleries {
+    padding-top: 40px;
+  }
+  .galleries li {
+    display: inline-block;
     margin: 0 1.4%;
-    width: 22%;
+    width: 30%;
+  }
+  .gallery-thumb-wrapper .gallery-thumb {
     background-position: top !important;
   }
-  .gallery-thumb:last-child {
+  .gallery-thumb-wrapper .gallery-thumb:last-child {
     margin-right: none;
   }
-  .gallery-slideshow img {
-    margin: 0;
+  .gallery-thumb-wrapper .gallery-thumb img {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
   }
-  .gallery-slideshow .two-images {
-    width: 50%;
+  .gallery-thumb-wrapper:hover {
+    text-decoration: none;
+    -webkit-transition: all 4s ease-in-out;
+    -moz-transition: all 4s ease-in-out;
+    -ms-transition: all 4s ease-in-out;
+    -o-transition: all 4s ease-in-out;
+    transition: all 4s ease-in-out;
   }
-  .gallery-slideshow .two-images:first-child {
-    border-right: 2px solid #1e2014;
+  .gallery-thumb-wrapper:hover .gallery-thumb {
+    border-top: 8px solid #3d3f27;
+  }
+  .gallery-thumb-wrapper:hover .gallery-thumb img {
+    -webkit-filter: grayscale(0);
+    -moz-filter: grayscale(0);
+    filter: grayscale(0);
+  }
+  .gallery-thumb-wrapper:hover .gallery-thumb p {
+    color: #d2d4ba;
+  }
+  .swipe-notice {
+    display: none;
+  }
+  .gallery-slideshow .flex-direction-nav {
+    display: block !important;
   }
   .gallery-slideshow p {
     font-size: 20px;
+    line-height: 25px !important;
     font-weight: 400;
   }
-  #inner-gallery {
+  .second-half .testimonial-push {
+    padding: 0 30px 0 0;
+  }
+  .inner-gallery {
     color: #555837;
   }
-  #inner-gallery .page-header-wrapper {
-    text-align: center;
-    margin: 70px 0 20px 0;
-  }
-  #inner-gallery .page-header-wrapper p {
-    clear: left;
-    margin-top: 0;
-    font-size: 1.5rem;
-    line-height: 35px !important;
-    padding: 0 5%;
-    color: #828754;
-  }
-  #inner-gallery .row {
+  .inner-gallery .row {
     display: block !important;
   }
-  #inner-gallery .mobile-row {
+  .inner-gallery .mobile-row {
     display: none !important;
   }
   .contact-form {
@@ -1775,7 +1820,6 @@ mobile. Make sure to double check these!
 			the footer.
 			*/
   }
-  /* end .footer-links */
 }
 /*
 DESKTOP
@@ -1794,71 +1838,22 @@ This is the desktop size. It's larger than an iPad so it will only
 be seen on the Desktop. 
 
 ******************************************************************/
+  #tagline p {
+    padding: 20px 15%;
+    font-size: 1.7rem !important;
+    line-height: 30px !important;
+  }
 }
 /*
 LARGE VIEWING SIZE
 This is for the larger monitors and possibly full screen viewers.
 */
-@media only screen and (min-width: 1240px) {
-  /******************************************************************
-Site Name: 
-Author: 
-
-Stylesheet: Super Large Monitor Stylesheet
-
-You can add some advanced styles here if you like. This kicks in
-on larger screens.
-
-******************************************************************/
-}
 /*
 RETINA (2x RESOLUTION DEVICES)
 This applies to the retina iPhone (4s) and iPad (2,3) along with
 other displays with a 2x resolution. You can also create a media
 query for retina AND a certain size if you want. Go Nuts.
 */
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  /******************************************************************
-Site Name: 
-Author: 
-
-Stylesheet: Retina Screens & Devices Stylesheet
-
-When handling retina screens you need to make adjustments, especially
-if you're not using font icons. Here you can add them in one neat
-place.
-
-******************************************************************/
-  /* 
-
-EXAMPLE 
-Let's say you have an image and you need to make sure it looks ok
-on retina screens. Let's say we have an icon which dimension are
-24px x 24px. In your regular stylesheets, it would look something
-like this:
-
-.icon {
-	width: 24px;
-	height: 24px;
-	background: url(img/test.png) no-repeat;
-}
-
-For retina screens, we have to make some adjustments, so that image
-doesn't look blurry. So, taking into account the image above and the
-dimensions, this is what we would put in our retina stylesheet:
-
-.icon {
-	background: url(img/test@2x.png) no-repeat;
-	background-size: 24px 24px;
-}
-
-So, you would create the same icon, but at double the resolution, meaning 
-it would be 48px x 48px. You'd name it the same, but with a @2x at the end
-(this is pretty standard practice). Set the background image so it matches
-the original dimensions and you are good to go. 
-
-*/
-}
 /*
 iPHONE 5 MEDIA QUERY
 Want to get fancy for no good reason? Knock yourself out.

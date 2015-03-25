@@ -88,10 +88,12 @@ function bones_scripts_and_styles() {
         wp_register_script( 'jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js', array(), false, true );
         wp_register_script( 'flexslider', '//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/jquery.flexslider-min.js', array('jquery'), false, true );
         wp_register_script( 'theme-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+        wp_register_script( 'gridalicious', get_stylesheet_directory_uri() . '/library/js/jquery.grid-a-licious.js', array( 'jquery' ), '', true );
         wp_enqueue_script( 'bones-modernizr' );
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'theme-js' );
         wp_enqueue_script( 'flexslider' );
+        wp_enqueue_script( 'gridalicious' );
 	}
 }
 
@@ -145,8 +147,9 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'bonestheme' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'bonestheme' ) // secondary nav in footer
+			'left-nav-group' => __( 'Left Nav Group', 'bonestheme' ),
+			'right-nav-group' => __( 'Right Nav Group', 'bonestheme' ),
+			'mobile-nav-group' => __( 'Mobile Nav Group', 'bonestheme' )
 		)
 	);
 } /* end bones theme support */
@@ -157,58 +160,58 @@ MENUS & NAVIGATION
 *********************/
 
 // the main menu
-function bones_main_nav() {
+function bones_left_nav_group() {
 	// display the wp3 menu if available
 	wp_nav_menu(array(
 		'container' => false,                           // remove nav container
-		'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-		'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
-		'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
-		'theme_location' => 'main-nav',                 // where it's located in the theme
+		'container_class' => 'clearfix',           				// class of container (should you choose to use it)
+		'menu' => __( 'Left Nav Group', 'bonestheme' ), // nav name
+		'menu_class' => '',         					// adding custom nav class
+		'theme_location' => 'left-nav-group',                 // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
 		'link_before' => '',                            // before each link
 		'link_after' => '',                             // after each link
 		'depth' => 0,                                   // limit the depth of the nav
-		'fallback_cb' => 'bones_main_nav_fallback'      // fallback function
+		'fallback_cb' => ''      // fallback function
 	));
 } /* end bones main nav */
 
 // the footer menu (should you choose to use one)
-function bones_footer_links() {
+function bones_right_nav_group() {
 	// display the wp3 menu if available
 	wp_nav_menu(array(
 		'container' => '',                              // remove nav container
-		'container_class' => 'footer-links clearfix',   // class of container (should you choose to use it)
-		'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-		'menu_class' => 'nav footer-nav clearfix',      // adding custom nav class
-		'theme_location' => 'footer-links',             // where it's located in the theme
+		'container_class' => 'clearfix',   						// class of container (should you choose to use it)
+		'menu' => __( 'Right Nav Group', 'bonestheme' ),   // nav name
+		'menu_class' => '',     						// adding custom nav class
+		'theme_location' => 'right-nav-group',          // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
 		'link_before' => '',                            // before each link
 		'link_after' => '',                             // after each link
 		'depth' => 0,                                   // limit the depth of the nav
-		'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
+		'fallback_cb' => ''  // fallback function
 	));
 } /* end bones footer link */
 
-// this is the fallback for header menu
-function bones_main_nav_fallback() {
-	wp_page_menu( array(
-		'show_home' => true,
-		'menu_class' => 'nav top-nav clearfix',      // adding custom nav class
-		'include'     => '',
-		'exclude'     => '',
-		'echo'        => true,
+// the footer menu (should you choose to use one)
+function bones_mobile_nav_group() {
+	// display the wp3 menu if available
+	wp_nav_menu(array(
+		'container' => '',                              // remove nav container
+		'container_class' => 'clearfix',   						// class of container (should you choose to use it)
+		'menu' => __( 'Mobile Nav Group', 'bonestheme' ),   // nav name
+		'menu_class' => '',     						// adding custom nav class
+		'theme_location' => 'mobile-nav-group',          // where it's located in the theme
+		'before' => '',                                 // before the menu
+		'after' => '',                                  // after the menu
 		'link_before' => '',                            // before each link
-		'link_after' => ''                             // after each link
-	) );
-}
-
-// this is the fallback for footer menu
-function bones_footer_links_fallback() {
-	/* you can put a default here if you like */
-}
+		'link_after' => '',                             // after each link
+		'depth' => 0,                                   // limit the depth of the nav
+		'fallback_cb' => ''  // fallback function
+	));
+} /* end bones footer link */
 
 /*********************
 RELATED POSTS FUNCTION
@@ -318,70 +321,39 @@ function masterstouch_get_homepage_slideshow() { ?>
 			<?php foreach( get_field('homepage_slideshow') as $slide ): ?>
 				<li>
 					<img src="<?php echo masterstouch_get_image_src( $slide['image'], 'homepage-slide-img'); ?>" alt="" />
-					<div class="flex-caption">&nbsp;</div>
 				</li>
 			<?php endforeach; ?>	
 		</ul>
 	</div>
 <?php }
 
-function masterstouch_get_the_employee_slider() {
-	$args = array(
+function masterstouch_get_the_employees() {
+	$reece_args = array(
 		'post_type' => 'employee',
 		'post_status' => 'publish',
 		'order' => 'ASC',
 		'order_by' => 'menu_order',
 		'posts_per_page' => -1
 	);
-	$employees = get_posts( $args ); ?>
+	$employees = get_posts( $reece_args ); ?>
 	<h1>Meet the Crew</h1>
 	<div class="divisor"></div>
-	<div class="employee-slider flexslider">
-		<div class="employee-nav clearfix">
-			<ul class="control-nav">
-	            <?php foreach ( $employees as $employee ): ?>
-	            <li><a href="#"><?php _e( get_the_title( $employee->ID ) ); ?></a></li>
-	            <?php endforeach; ?>
-	        </ul><!-- end control-nav -->
-	    </div>    
-		<ul class="slides">
-			<?php foreach ( $employees as $employee ) { ?>
-				<li style="background: url(<?php _e( masterstouch_get_image_src( $employee->employee_image, 'employee-slide-img' ) ); ?>);">
-					<div class="employee-slide">
-						<div class="employee-desc">
-							<div class="height">
-								<span><?php  _e( get_the_title( $employee->ID ) ); ?></span><br />
-								<p class="job-title"><?php _e( $employee->job_title ); ?></p>
-								<p><?php _e( $employee->biography ); ?></p>
-							</div>	
-							<div class="divisor"></div>
-						</div>
-					</div>	
-				</li>
-			<?php } ?>
-		</ul>
-	</div>	
-<?php }
-
-function masterstouch_get_the_employees() {
-	$args = array(
-		'post_type' => 'employee',
-		'post_status' => 'publish',
-		'order' => 'ASC',
-		'order_by' => 'menu_order',
-		'posts_per_page' => -1
-	);
-	$employees = get_posts( $args ); ?>
-	<ul class="mobile-emp">
-		<?php foreach ( $employees as $employee ) { ?>
-			<li>
-				<span><?php  _e( get_the_title( $employee->ID ) ); ?></span><br />
-				<p class="job-title"><?php _e( $employee->job_title ); ?></p>
+	<?php foreach ( $employees as $employee ) { ?>
+		<div class="employee clearfix">
+			<div class="employee-image">
+				<img src="<?php _e( masterstouch_get_image_src( $employee->employee_image, 'employee-img' ) ); ?>" alt="" />
+			</div>
+			<div class="employee-desc">
+				<div class="emp-title">
+					<span><?php  _e( get_the_title( $employee->ID ) ); ?></span><br />
+					<span class="job-title"><?php _e( $employee->job_title ); ?></span>
+					</div>
+				<!-- <div class="divisor"></div> -->
 				<p><?php _e( $employee->biography ); ?></p>
-			</li>
-		<?php } ?>
-	</ul>	
-<?php }
+			</div>	
+		</div>
+	<?php }
+}
 
 function masterstouch_get_the_services() {
 	$services = get_field( 'services' );
@@ -398,49 +370,34 @@ function masterstouch_get_the_services() {
 <?php }
 }
 
-function masterstouch_get_before_after_rows() {
-	$rows = get_field('before_and_after_set');
-	foreach ( $rows as $row ) { ?>
-		
-		<div class="row clearfix">
-			<div class="clearfix">
-				<div class="sixcol first">
-					<h2>Before</h2>
-				</div>	
-				<div class="sixcol last">
-					<h2>After</h2>
-				</div>
-			</div>		
-			<div class="divisor"></div>
-			<div class="clearfix green">
-				<div class="sixcol first">
-					<img src="<?php _e( masterstouch_get_image_src( $row['before_image'], 'before-after-img' ) ); ?>" alt="" />
-				</div>
-				<div class="sixcol last">
-					<img src="<?php _e( masterstouch_get_image_src( $row['after_image'], 'before-after-img' ) ); ?>" alt="" />
-				</div>
+function masterstouch_get_the_first_testimonial() {
+	$i = 0;
+	foreach ( get_field( 'testimonials' ) as $t ) { 
+		if ($i == 0) {
+?>
+		<div class="testimonial-wrapper">
+			<div class="testimonial">
+				<p>"<?php echo $t['testimonial']; ?>"</p>
 			</div>
-		</div>
-		<div class="mobile-row clearfix">
-			<div class="divisor"></div>
-			<div class="sixcol green first">
-				<h2>Before</h2><br />
-				<img src="<?php _e( masterstouch_get_image_src( $row['before_image'], 'before-after-img' ) ); ?>" alt="" />
+			<div class="client clearfix">
+				<span>- <?php echo $t['client']; ?></span>
 			</div>
-			<div class="sixcol green last">
-				<h2>After</h2><br />
-				<img src="<?php _e( masterstouch_get_image_src( $row['after_image'], 'before-after-img' ) ); ?>" alt="" />
-			</div>
-		</div>
-	<?php }
+		</div>	
+	<?php $i++; }
+	}	
 }
 
-function masterstouch_get_the_testimonials() {
-	foreach ( get_field( 'testimonials' ) as $t ) { ?>
-		<div class="testimonial">
-			<p>"<?php echo $t['testimonial']; ?>"</p>
-			<span>- <?php echo $t['client']; ?></span>
-		</div>
+function masterstouch_get_all_testimonials() {
+	foreach ( get_field( 'testimonials' ) as $t ) { 
+?>
+		<div class="item">
+			<div class="testimonial">
+				<p>"<?php echo $t['testimonial']; ?>"</p>
+			</div>
+			<div class="client clearfix">
+				<span>- <?php echo $t['client']; ?></span>
+			</div>
+		</div>	
 	<?php }
 }
 
@@ -452,7 +409,7 @@ function masterstouch_get_cards() { ?>
 			<img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/axe.png" alt="crew-icon" /><br />
 			<span><?php echo $left['title']; ?></span>
 		</div>
-		<div class="divisor"></div>
+		<div class="redwood-divisor-small"></div>
 		<div class="desc">
 			<p><?php echo $left['caption']; ?></p>
 		</div>
@@ -466,7 +423,7 @@ function masterstouch_get_cards() { ?>
 			<img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/911.png" alt="emergency-icon" /><br />
 			<span><?php echo $middle['title']; ?></span>
 		</div>
-		<div class="divisor"></div>
+		<div class="redwood-divisor-small"></div>
 		<div class="desc">
 			<p><?php echo $middle['caption']; ?></p>
 		</div>
@@ -480,7 +437,7 @@ function masterstouch_get_cards() { ?>
 			<img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/boot.png" alt="services-icon" /><br />
 			<span><?php echo $right['title']; ?></span>
 		</div>
-		<div class="divisor"></div>
+		<div class="redwood-divisor-small"></div>
 		<div class="desc">
 			<p><?php echo $right['caption']; ?></p>
 		</div>

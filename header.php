@@ -36,17 +36,15 @@
 					</div>
 				</div>	
 				<div id="inner-header" class="clearfix">
-					<div class="nav-container">
+					<div class="nav-container clearfix">
 						<div class="nav left first-nav-group">
-							<a href="masterstouch/about/">About</a>
-							<a href="masterstouch/services/">Services</a>
+							<?php echo bones_left_nav_group(); ?>
 						</div>
 						<div class="absolute">
-							<a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php _e( get_stylesheet_directory_uri() ); ?>/library/images/mt_logo.png" id="logo" alt="Master's Touch Tree Service Logo" /></a>
+							<a href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/library/images/mt_logo.png" id="logo" alt="Master's Touch Tree Service Logo" /></a>
 						</div>
 						<div class="nav left second-nav-group">
-							<a href="masterstouch/gallery/">Gallery</a>
-							<a href="masterstouch/contact/">Contact</a>
+							<?php echo bones_right_nav_group(); ?>
 						</div>
 					</div>
 					<div class="mobile-phone">
@@ -59,9 +57,6 @@
 			</header>
 			<div class="mobile-nav-container" style="display: none;">
 				<div class="nav">
-					<a href="masterstouch/about/">About</a>
-					<a href="masterstouch/services/">Services</a>
-					<a href="masterstouch/gallery/">Gallery</a>
-					<a href="masterstouch/contact/">Contact</a>
+					<?php echo bones_mobile_nav_group(); ?>
 				</div>
 			</div>

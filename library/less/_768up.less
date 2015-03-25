@@ -15,6 +15,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	margin-top: 40px;
 }
 
+h1 {
+	font-size: 2.8em;
+	line-height: 1.333em;
+}
+
 p {
 	line-height: 23px;
 }
@@ -27,13 +32,17 @@ LAYOUT & GRID STYLES
 	max-width: 1200px;
 }
 
+.interior-page-width {
+	padding: 0 30px;
+}
+
 /*********************
 HEADER STYLES
 *********************/
 
 .header {
 	padding-top: 0;
-	height: 178px;
+	height: 179px;
 
 	#site-title {
 		font-size: 2.3rem;
@@ -51,9 +60,8 @@ HEADER STYLES
 	#header-phone {
 		display:block !important;
 		font-family: @sans-serif;
-		color: @dark-gray;
+		color: #ebebeb;
 		text-align: right;
-		//font-weight: 700;
 		font-size: 1.3rem;
 		width: 350px;
 		padding: 20px 0;
@@ -72,10 +80,11 @@ HEADER STYLES
 		width: 100%;
 
 		.nav-container {
-			width: 640px;
+			width: 690px;
 			margin: 0 auto;
 			position: relative;
 			display: block !important;
+			padding-left: 28px;
 		}
 
 		.nav {
@@ -106,6 +115,15 @@ HEADER STYLES
 			}
 		}
 
+		ul {
+			margin: 0 !important;
+			float: left;
+
+			li {
+				float: left;
+			}
+		}
+
 		.first-nav-group {
 			margin: 0 8px 0 0;
 		}
@@ -113,7 +131,8 @@ HEADER STYLES
 		.second-nav-group {
 			padding-top: 15px;
 			float: left;
-			margin-left: 178px;
+			margin-left: 407px;
+			margin-top: -59px;
 
 			a {
 				border-bottom: 0;
@@ -133,8 +152,6 @@ HEADER STYLES
 		.mobile-phone {
 			display: none;
 		}
-
-
 	}	
 }
 
@@ -149,24 +166,18 @@ CONTENT & POSTS
 #content {
 	#inner-content {
 		padding: 0 50px;
+	}
+}
 
-		.page-header-wrapper {
-			text-align: center;
-			margin: 70px 0 20px 0;
+.page-header-wrapper {
+	text-align: center;
+	margin: 70px 0 35px 0 !important;
 
-			p {
-				clear: left;
-				margin-top: 0;
-				font-size: 1.5rem;
-				line-height: 35px;
-				padding: 0 5%;
-				color: lighten(@green, 15%);
-			}
-
-			.phone {
-				font-size: 2.4rem;
-			}
-		}
+	p {
+		margin-top: 15px;
+		font-size: 1.5rem;
+		line-height: 30px !important;
+		padding: 0 10%;
 	}
 }
 
@@ -180,15 +191,9 @@ CONTENT & POSTS
 }
 
 #tagline {
-	text-align: center;
-	line-height: 30px;
-	color: @dark-gray;
-	line-height: 30px;
-	margin-top: 108px;
 
 	p {
-		padding: 20px 15%;
-		font-size: 1.7rem !important;
+		padding: 0 15%;
 	}
 }
 
@@ -207,24 +212,17 @@ CONTENT & POSTS
 	#homepage-services {
 		margin-bottom: 0;
 	}
+}
 
-	#homepage-crew {}
+.extra-space {
+	padding: 0;
+}
 
-	#homepage-emergency {}
-
-	#homepage-before-after {}
+.galleries {
+	margin-top: 0;
 }
 
 .services {
-
-	.page-header-wrapper {
-
-		p {
-			padding: 0 10% !important;
-			font-size: 1.7rem !important;
-			line-height: 35px !important;
-		}	
-	}
 
 	#inner-services {
 
@@ -237,164 +235,128 @@ CONTENT & POSTS
 	}
 }
 
+.large-testimonial-area {
+	padding-top: 40px !important;
+}
+
 .testimonial-group {
 	display: block !important;
 	padding-right: 15px;
+}
 
-	.testimonial {
-		border-left: 3px solid lighten(@green, 55%) ;
-		margin-bottom: 15px;
-		padding: 10px 20px;
-		background: lighten(@green, 58%);
+.read-more-tests {
+	margin: 30px 10%;
+	padding: 15px 10px;
+	text-align: center;
+	background: darken(@green, 5%);
+	display: block;
+	.boxShadow(0, 0, 5px, 1px);
+	.border-radius(5px);
+	color: @light-green !important;
 
-		p {
-			font-size: 14px !important;
-			line-height: 18px;
-		}
-
-		span {
-			font-family: @serif;
-			font-size: 18px;
-			color:lighten(@green, 15%);
-		}
+	&:hover {
+		background: @green;
 	}
 }
 
-.employee-slider {
-	display: block !important;
-	width: 100%;
-	height: auto;
-
-	.slides {
-		height: auto;
-	}
-
-	li {
-		height: auto;
-		width: 100%;
-
-		.employee-image {
-
-			img {
-				width: 100%;
-				height: auto;
-			}
-		}
-
-		.employee-desc {
-			max-width: 400px;
-			width: 100%;
-			float: right;
-			margin: 0 2% 0 0;
-			height: 400px;
-			background: darken(@green, 6%);
-			color: lighten(@green, 50%);
-			font-family: @sans-serif;
-			padding: 20px 20px 0 20px;
-			
-			.height {
-				height: 350px;
-				overflow: scroll !important;
-			}
-		}
-
-		span {
-			font-size: 1.7rem;
-			font-family: @soviet;
-			margin-bottom: 0;
-		}
-
-		.job-title {
-			margin-top: 0;
-			font-style: italic;
-		}
-
-		span, .job-title {
-			color: lighten(@green, 20%);
-		}
-	}
-
-	.employee-nav {
-		background: @dark-green;
-		padding: 20px;
-
-		.control-nav {
-			position: relative;
-			margin: 0 auto;
-			padding: 0;
-			display:block;
-			width: 500px;
-
-
-			li {
-
-				a {
-					color: @light-gray;
-					font-family: @sans-serif;
-					text-transform: uppercase;
-					float: left !important;
-					position: relative;
-					padding: 0 3% 0;
-
-					&:hover {
-						color: lighten(@green, 20%);
-						text-decoration: none;
-					}
-				}
-			}
-		}
-	}
-}	
-.mobile-emp {
-	display:none !important;
+.employee-container {
+	margin-top: 40px;
 }
 
-.gallery-thumb {
-	float: left;
-	margin: 0 1.4%;
-	width: 22%;
-	background-position: top !important;
+.employee {
+
+	.emp-title {
+		text-align: left;
+	}
+
+	.employee-image {
+		float: left;
+		margin-right: 50px;
+	}
 
 	&:last-child {
-		margin-right: none;
+
+		.employee-image {
+			margin-bottom: 50px;
+		}
 	}
+}
+
+.galleries {
+	padding-top: 40px;
+
+	li {
+		display: inline-block;
+		margin: 0 1.4%;
+		width: 30%;
+	}
+}
+
+.gallery-thumb-wrapper {
+
+	.gallery-thumb {
+		background-position: top !important;
+
+		&:last-child {
+			margin-right: none;
+		}
+
+		img {
+			.border-radius(4px);
+			-webkit-filter: grayscale(100%);
+	        -moz-filter: grayscale(100%);
+	        filter: grayscale(100%);
+		}
+	}
+
+	&:hover {
+		text-decoration: none;
+		.transition(all,4s);
+
+
+		.gallery-thumb {
+			border-top: 8px solid darken(@green, 8%);
+
+			img {
+				-webkit-filter: grayscale(0);
+	            -moz-filter: grayscale(0);
+	            filter: grayscale(0);
+			}
+
+			p {
+				color: lighten(@green, 50%);
+			}
+		}	
+	}
+}
+
+.swipe-notice {
+	display: none;
 }
 
 .gallery-slideshow {
-	img {
-		margin: 0;
-	}
 
-	.two-images {
-		width: 50%;
-		
-		&:first-child {
-			border-right: 2px solid @dark-green;
-		}
+	.flex-direction-nav {
+		display: block !important;
 	}
 
 	p {
 		font-size: 20px;
+		line-height: 25px !important;
 		font-weight: 400;
 	}
 }
 
-#inner-gallery	{
-	color: @green;
+.second-half {
 
-	.page-header-wrapper {
-		text-align: center;
-		margin: 70px 0 20px 0;
-
-		p {
-			clear: left;
-			margin-top: 0;
-			font-size: 1.5rem;
-			line-height: 35px !important;
-			padding: 0 5%;
-			color: lighten(@green, 15%);
-		}
+	.testimonial-push {
+		padding: 0 30px 0 0;
 	}
+
+}	
+
+.inner-gallery	{
+	color: @green;
 
 	.row {
 		display:block !important;
